@@ -3,19 +3,24 @@ import { NgModule } from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import { AppComponent } from './app.component';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCardModule, MatExpansionModule, MatInputModule, MatToolbarModule, MatProgressSpinnerModule} from '@angular/material';
 import {PostListComponent} from './posts/post-list/Post-list.component';
-import { HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from "./app-routing.module";
+import {LoginComponent} from './auth/login/login.component';
+import {SignupComponent} from './auth/singup/signup.component';
+import {AuthInterceptor} from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCreateComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +33,10 @@ import {AppRoutingModule} from "./app-routing.module";
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
