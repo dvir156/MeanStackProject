@@ -1,5 +1,6 @@
 const express = require("express");
 const multer = require("multer");
+
 const Post = require("../models/post");
 const checkAuth = require("../middleware/check-auth");
 
@@ -30,7 +31,9 @@ const storage = multer.diskStorage({
   }
 });
 
-router.post("",checkAuth,
+router.post(
+  "",
+  checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
@@ -53,13 +56,14 @@ router.post("",checkAuth,
 );
 
 router.put(
-  "/:id",checkAuth,
+  "/:id",
+  checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
     if (req.file) {
       const url = req.protocol + "://" + req.get("host");
-      imagePath = url + "/images/" + req.file.filename
+      imagePath = url + "/images/" + req.file.filename;
     }
     const post = new Post({
       _id: req.body.id,
@@ -68,12 +72,14 @@ router.put(
       imagePath: imagePath,
       creator: req.userData.userId
     });
-    console.log(post);
-    Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post).then(result => {
-      if(result.nModified > 0){
+    Post.updateOne(
+      { _id: req.params.id, creator: req.userData.userId },
+      post
+    ).then(result => {
+      if (result.nModified > 0) {
         res.status(200).json({ message: "Update successful!" });
-      }else {
-        res.status(401).json({ message: "Update Failed!" });
+      } else {
+        res.status(401).json({ message: "Not authorized!" });
       }
     });
   }
@@ -85,23 +91,21 @@ router.get("", (req, res, next) => {
   const postQuery = Post.find();
   let fetchedPosts;
   if (pageSize && currentPage) {
-    postQuery
-      .skip(pageSize * (currentPage - 1))
-      .limit(pageSize);
+    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
   }
-
-  postQuery.then(documents => {
-    fetchedPosts = documents;
-    return Post.count();
-  }).then(count => {
-    res.status(200).json({
-      message: "Posts fetched successfully!",
-      posts: fetchedPosts,
-      maxPosts: count
+  postQuery
+    .then(documents => {
+      fetchedPosts = documents;
+      return Post.count();
+    })
+    .then(count => {
+      res.status(200).json({
+        message: "Posts fetched successfully!",
+        posts: fetchedPosts,
+        maxPosts: count
+      });
     });
-  });
 });
-
 
 router.get("/:id", (req, res, next) => {
   Post.findById(req.params.id).then(post => {
@@ -114,13 +118,16 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id , creator: req.userData.userId}).then(result => {
-    if(result.n > 0){
-      res.status(200).json({ message: "delete successful!" });
-    }else {
-      res.status(401).json({ message: "delete Failed!" });
+  Post.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(
+    result => {
+      console.log(result);
+      if (result.n > 0) {
+        res.status(200).json({ message: "Deletion successful!" });
+      } else {
+        res.status(401).json({ message: "Not authorized!" });
+      }
     }
-  });
+  );
 });
 
 module.exports = router;
