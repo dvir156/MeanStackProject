@@ -13,7 +13,7 @@ import {
   MatToolbarModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
-  MatDialogModule, MatCheckboxModule
+  MatDialogModule, MatCheckboxModule, MatButtonToggleModule, MatDividerModule, MatMenuModule, MatIconModule, MatListModule, MatBadgeModule
 } from '@angular/material';
 import {PostListComponent} from './posts/post-list/Post-list.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -53,7 +53,13 @@ import {PostContentFilterPipe} from './posts/Post-Content-Filter-Pipe';
     HttpClientModule,
     FormsModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonToggleModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatIconModule,
+    MatListModule,
+    MatBadgeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

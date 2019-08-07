@@ -18,9 +18,11 @@ export class PostListComponent implements OnInit, OnDestroy {
   //   { title: "Third Post", content: "This is the third post's content" }
   // ];
   posts: Post[] = [];
+  usersThatLiked:string[] = [];
   isLoading = false;
   totalPosts = 0;
-  postsPerPage = 2;
+  numOfLikes =0;
+  postsPerPage = 5;
   currentPage = 1;
   pageSizeOptions = [1, 2, 5, 10];
   userIsAuthenticated = false;
@@ -31,12 +33,19 @@ export class PostListComponent implements OnInit, OnDestroy {
   searchTermByContent: string;
 
 
+
   constructor(
     public postsService: PostsService,
     private authService: AuthService
   ) {}
 
   ngOnInit() {
+    this.usersThatLiked.push("blabla");
+    this.usersThatLiked.push("blabla2");
+    this.usersThatLiked.push("blabla3");
+    this.usersThatLiked.push("blabla4");
+    this.usersThatLiked.push("blabla5");
+    this.usersThatLiked.push("blabla6");
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
@@ -75,5 +84,14 @@ export class PostListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.postsSub.unsubscribe();
     this.authStatusSub.unsubscribe();
+  }
+
+
+  onLike() {
+    this.numOfLikes +=1;
+  }
+
+  onDisLike() {
+    this.numOfLikes -=1;
   }
 }
