@@ -21,6 +21,7 @@ import {SignupComponent} from './auth/singup/signup.component';
 import {AuthInterceptor} from './auth/auth-interceptor';
 import {ErrorInterceptor} from './error-interceptor';
 import {ErrorComponent} from './error/error.component';
+import {PostsFilterPipe} from './posts/posts-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {ErrorComponent} from './error/error.component';
     PostListComponent,
     LoginComponent,
     SignupComponent,
-    ErrorComponent
+    ErrorComponent,
+    PostsFilterPipe
   ],
   imports: [
     BrowserModule,

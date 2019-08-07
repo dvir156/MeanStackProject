@@ -24,7 +24,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   private postId: string;
   private authStatusSub: Subscription;
 
-  constructor(public postsService: PostsService, public route: ActivatedRoute,private authService: AuthService) {}
+  constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService) {}
 
   ngOnInit() {
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(authStatus => {
@@ -100,7 +100,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     this.form.reset();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }
 }
