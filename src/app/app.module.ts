@@ -5,14 +5,16 @@ import { AppComponent } from './app.component';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
 import {ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule,
+import {
+  MatButtonModule,
   MatCardModule,
   MatExpansionModule,
   MatInputModule,
   MatToolbarModule,
   MatProgressSpinnerModule,
-  MatPaginatorModule ,
-  MatDialogModule} from '@angular/material';
+  MatPaginatorModule,
+  MatDialogModule, MatCheckboxModule
+} from '@angular/material';
 import {PostListComponent} from './posts/post-list/Post-list.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
@@ -21,7 +23,8 @@ import {SignupComponent} from './auth/singup/signup.component';
 import {AuthInterceptor} from './auth/auth-interceptor';
 import {ErrorInterceptor} from './error-interceptor';
 import {ErrorComponent} from './error/error.component';
-import {PostsFilterPipe} from './posts/posts-filter.pipe';
+import {PostNameFilterPipe} from './posts/posts-filter.pipe';
+import {PostContentFilterPipe} from './posts/Post-Content-Filter-Pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import {PostsFilterPipe} from './posts/posts-filter.pipe';
     LoginComponent,
     SignupComponent,
     ErrorComponent,
-    PostsFilterPipe
+    PostNameFilterPipe,
+    PostContentFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import {PostsFilterPipe} from './posts/posts-filter.pipe';
     MatPaginatorModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

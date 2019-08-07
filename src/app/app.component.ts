@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './auth/auth.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,16 @@ import {AuthService} from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,private titleService: Title ) {
 
   }
-
+  public setTitle( newTitle: string) {
+    this.titleService.setTitle( newTitle );
+  }
 
   ngOnInit(){
     this.authService.autoAuthUser();
+    this.setTitle("SocialNetwork")
   }
 
 }

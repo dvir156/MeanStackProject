@@ -27,7 +27,8 @@ export class PostListComponent implements OnInit, OnDestroy {
   userId: string;
   private postsSub: Subscription;
   private authStatusSub: Subscription;
-  searchTerm: string;
+  searchTermByName: string;
+  searchTermByContent: string;
 
 
   constructor(
