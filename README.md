@@ -1,3 +1,3 @@
 Mean Stack Project
 
-alex and dvir
+Orel, Yelena and Dvir
