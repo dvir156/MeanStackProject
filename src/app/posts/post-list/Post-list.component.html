@@ -9,7 +9,7 @@
               style="width:300px; border: 2px groove;
   border-radius: 4px;" [(ngModel)]="searchTermByContent" />
     </div>
-  <mat-checkbox>include picture</mat-checkbox>
+  <mat-checkbox><span style="font-size: small;">include picture</span></mat-checkbox>
 
   <mat-expansion-panel *ngFor="let post of posts | postNameFilter:searchTermByName|postContentFilter:searchTermByContent" >
     <mat-expansion-panel-header>
