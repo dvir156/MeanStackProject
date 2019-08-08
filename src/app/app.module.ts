@@ -2,64 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import { AppComponent } from './app.component';
-import {PostCreateComponent} from './posts/post-create/post-create.component';
-import {ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatExpansionModule,
-  MatInputModule,
-  MatToolbarModule,
-  MatProgressSpinnerModule,
-  MatPaginatorModule,
-  MatDialogModule, MatCheckboxModule, MatButtonToggleModule, MatDividerModule, MatMenuModule, MatIconModule, MatListModule, MatBadgeModule
-} from '@angular/material';
-import {PostListComponent} from './posts/post-list/Post-list.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
-import {LoginComponent} from './auth/login/login.component';
-import {SignupComponent} from './auth/singup/signup.component';
 import {AuthInterceptor} from './auth/auth-interceptor';
 import {ErrorInterceptor} from './error-interceptor';
 import {ErrorComponent} from './error/error.component';
-import {PostNameFilterPipe} from './posts/posts-filter.pipe';
-import {PostContentFilterPipe} from './posts/Post-Content-Filter-Pipe';
+import {AngularMaterialModule} from './angular-material.module';
+import {PostsModule} from './posts/posts.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateComponent,
     HeaderComponent,
-    PostListComponent,
-    LoginComponent,
-    SignupComponent,
     ErrorComponent,
-    PostNameFilterPipe,
-    PostContentFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatPaginatorModule,
+    AngularMaterialModule,
     HttpClientModule,
-    FormsModule,
-    MatDialogModule,
-    MatCheckboxModule,
-    MatButtonToggleModule,
-    MatDividerModule,
-    MatMenuModule,
-    MatIconModule,
-    MatListModule,
-    MatBadgeModule
+    PostsModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
