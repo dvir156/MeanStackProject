@@ -4,35 +4,35 @@ import {AuthService} from '../auth.service';
 import {Subscription} from 'rxjs';
 
 @Component({
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit, OnDestroy{
+export class LoginComponent implements OnInit, OnDestroy {
   isLoading = false;
   private authStatusSub: Subscription;
 
 
   constructor(public authService: AuthService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
       authStatus => {
         this.isLoading = false;
       }
-    )
+    );
   }
 
-  onLogin(form: NgForm){
-    if(form.invalid){
+  onLogin(form: NgForm) {
+    if (form.invalid) {
       return;
     }
 
     this.isLoading = true;
-    this.authService.login(form.value.email,form.value.password);
+    this.authService.login(form.value.email, form.value.password);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }
 }
