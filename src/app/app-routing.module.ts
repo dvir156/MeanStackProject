@@ -1,11 +1,10 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { PostCreateComponent } from "./posts/post-create/post-create.component";
-import {PostListComponent} from "./posts/post-list/Post-list.component";
-import {LoginComponent} from './auth/login/login.component';
-import {SignupComponent} from './auth/singup/signup.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
+import {PostListComponent} from './posts/post-list/Post-list.component';
 import {AuthGuard} from './auth/auth.guard';
 import {MapComponent} from './map/map.component';
+import {UserProfileComponent} from './user-profile/profile-info/user.profile.component';
 
 const routes: Routes = [
   { path: '', component: PostListComponent },
@@ -14,6 +13,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   {path: 'map' , component: MapComponent}
+  { path: 'userprofile', component: UserProfileComponent , canActivate: [AuthGuard]},
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
 ];
 
 @NgModule({

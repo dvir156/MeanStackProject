@@ -9,19 +9,22 @@ exports.createPost = (req, res, next) => {
     imagePath: url + "/images/" + req.file.filename,
     creator: req.userData.userId
   });
-  post.save().then(createdPost => {
-    res.status(201).json({
-      message: "Post added successfully",
-      post: {
-        ...createdPost,
-        id: createdPost._id
-      }
-    });
-  }).cache(error => {
-    res.status(500).json({
-      message: "Create Post"
+  post
+    .save()
+    .then(createdPost => {
+      res.status(201).json({
+        message: "Post added successfully",
+        post: {
+          ...createdPost,
+          id: createdPost._id
+        }
+      });
     })
-  })
+    .catch(error => {
+      res.status(500).json({
+        message: "Creating a post failed!"
+      });
+    });
 };
 
 exports.updatePost = (req, res, next) => {
@@ -41,7 +44,7 @@ exports.updatePost = (req, res, next) => {
     { _id: req.params.id, creator: req.userData.userId },
     post
   ).then(result => {
-    if (result.nModified > 0) {
+    if (result.n > 0) {
       res.status(200).json({ message: "Update successful!" });
     } else {
       res.status(401).json({ message: "Not authorized!" });

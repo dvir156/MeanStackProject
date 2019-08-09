@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MOMGO_PASSWORD_DIVR": "put here you password noob",
+    "JWT_KEY": "alex_and_dvir_secret"
+  }
+}

@@ -1,15 +1,27 @@
 <mat-toolbar color="primary">
-  <span><a routerLink="/">Mytoolbar</a></span>
+  <span><a routerLink="/">SocialNetwork</a></span>
   <span class="spacer"></span>
   <ul>
+    <li *ngIf="userIsAuthenticated">
+      <div class="dropdown">
+        <button class="dropbtn">{{ "user name" }}
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a routerLink="/userprofile">User Profile</a>
+          <a href="#">Statistics</a>
+          <a href="#">at work</a>
+        </div>
+      </div>
+    </li>
     <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+      <a mat-button routerLink="auth/login" routerLinkActive="mat-accent">Login</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+      <a mat-button routerLink="auth/signup" routerLinkActive="mat-accent">Signup</a>
     </li>
     <li *ngIf="userIsAuthenticated">
       <button mat-button (click)="onLogout()">Logout</button>

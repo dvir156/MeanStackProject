@@ -8,11 +8,11 @@ import {Subscription} from 'rxjs';
     styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent implements OnInit , OnDestroy{
+export class HeaderComponent implements OnInit , OnDestroy {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -23,15 +23,14 @@ export class HeaderComponent implements OnInit , OnDestroy{
       });
   }
 
-  onLogout(){
+  onLogout() {
     this.authService.logout();
   }
 
 
-  ngOnDestroy(){
-    this.authListenerSubs.unsubscribe()
+  ngOnDestroy() {
+    this.authListenerSubs.unsubscribe();
   }
-
 
 }
 

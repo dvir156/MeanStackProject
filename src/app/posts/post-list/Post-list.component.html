@@ -1,13 +1,41 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
-  <mat-expansion-panel *ngFor="let post of posts">
+
+    <div class="form-group">
+      <input  type="text" class="form-control" placeholder="Search Post"
+           style="width:300px; border: 2px groove;
+  border-radius: 4px;" [(ngModel)]="searchTermByName" />
+      <input  type="text" class="form-control" placeholder="By Post Content"
+              style="width:300px; border: 2px groove;
+  border-radius: 4px;" [(ngModel)]="searchTermByContent" />
+    </div>
+  <mat-checkbox><span style="font-size: small;">include picture</span></mat-checkbox>
+
+  <mat-expansion-panel *ngFor="let post of posts | postNameFilter:searchTermByName|postContentFilter:searchTermByContent" >
     <mat-expansion-panel-header>
-      {{ post.title }}
+      {{ post.title}}
     </mat-expansion-panel-header>
     <div class="post-image">
       <img [src]="post.imagePath" [alt]="post.title">
     </div>
     <p>{{ post.content }}</p>
+    <mat-divider></mat-divider>
+    <mat-menu #appMenu="matMenu">
+      <mat-list *ngFor="let users of usersThatLiked">
+        <span style="color: whitesmoke; ">{{users}}</span>
+      </mat-list>
+
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      Likes : {{numOfLikes}}
+    </button>
+
+
+    <p></p>
+    <button  mat-button *ngIf="numOfLikes==0" (click)="onLike()">Like</button>
+    <button  color="accent"  mat-button *ngIf="numOfLikes==1" (click)="onDisLike()">Dislike</button>
+
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
       <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
       <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>

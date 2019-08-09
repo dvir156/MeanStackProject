@@ -2,27 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import { AppComponent } from './app.component';
-import {PostCreateComponent} from './posts/post-create/post-create.component';
-import {ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule,
-  MatCardModule,
-  MatExpansionModule,
-  MatInputModule,
-  MatToolbarModule,
-  MatProgressSpinnerModule,
-  MatPaginatorModule ,
-  MatDialogModule} from '@angular/material';
-import {PostListComponent} from './posts/post-list/Post-list.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
-import {LoginComponent} from './auth/login/login.component';
-import {SignupComponent} from './auth/singup/signup.component';
 import {AuthInterceptor} from './auth/auth-interceptor';
 import {ErrorInterceptor} from './error-interceptor';
 import {ErrorComponent} from './error/error.component';
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
+import {AngularMaterialModule} from './angular-material.module';
+import {PostsModule} from './posts/posts.module';
+import {UserProfileModule} from './user-profile/user.profile.module';
 
 
 
@@ -30,8 +20,8 @@ import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateComponent,
     HeaderComponent,
+    ErrorComponent
     PostListComponent,
     LoginComponent,
     SignupComponent,
@@ -41,15 +31,8 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatPaginatorModule,
+    AngularMaterialModule,
     HttpClientModule,
     FormsModule,
     MatDialogModule,
