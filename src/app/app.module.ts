@@ -8,25 +8,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {AuthInterceptor} from './auth/auth-interceptor';
 import {ErrorInterceptor} from './error-interceptor';
 import {ErrorComponent} from './error/error.component';
-import { MapComponent } from './map/map.component';
-import { AgmCoreModule } from '@agm/core';
 import {AngularMaterialModule} from './angular-material.module';
 import {PostsModule} from './posts/posts.module';
 import {UserProfileModule} from './user-profile/user.profile.module';
-
-
-
+import {MapMdoule} from './map/map.mdoule';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ErrorComponent
-    PostListComponent,
-    LoginComponent,
-    SignupComponent,
-    ErrorComponent,
-    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -34,11 +25,9 @@ import {UserProfileModule} from './user-profile/user.profile.module';
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
-    FormsModule,
-    MatDialogModule,
-    AgmCoreModule.forRoot({
-      apiKey: process.env.googlekey;
-    })
+    PostsModule,
+    UserProfileModule,
+    MapMdoule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

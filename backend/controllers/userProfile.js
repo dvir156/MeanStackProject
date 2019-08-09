@@ -8,6 +8,7 @@ exports.newInfo = (req, res, next) => {
     age: req.body.age,
     country: req.body.country,
     creator: req.userData.userId
+
   });
   data.save().then(result => {
       res.status(201).json({
@@ -22,9 +23,9 @@ exports.newInfo = (req, res, next) => {
 };
 
 exports.getAllUserData = (req, res, next) => {
-  console.log("test");
-  UserProfile.find(req.userData.creator).then(info =>{
-    console.log(info);
+  console.log(req.userData.creator);
+  UserProfile.findById(req.userData.creator).then(info =>{
+    console.log(info.name);
       res.status(200).json(info);
   }).catch(error => {
     res.status(500).json({
