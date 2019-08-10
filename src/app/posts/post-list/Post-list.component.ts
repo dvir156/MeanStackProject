@@ -81,8 +81,8 @@ export class PostListComponent implements OnInit, OnDestroy {
   onLike(post: Post, userId: string) {
     let num = parseInt(post.numOflikes, 10);
     num += 1;
-    post.numOflikes = String(num);
     this.likedPost = false;
+    post.numOflikes = String(num);
     //add the user id to users
     //TODO
 
@@ -92,16 +92,16 @@ export class PostListComponent implements OnInit, OnDestroy {
   onDislike(post: Post,userId: string) {
     let num = parseInt(post.numOflikes, 10);
     num -= 1;
-    post.numOflikes = String(num);
     this.likedPost = true;
+    post.numOflikes = String(num);
     //TODO
     //delete this user from the list
     //this.usersThatLiked.filter(e => e !== userId);
     this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, userId);
   }
 
-  UserLikedThisPost() {
-    return this.likedPost;
+  UserLikedThisPost(post: Post, userId: string) {
+    return !post.userIdThatLiked.includes(userId);
   }
 
   updateList(post: Post) {
