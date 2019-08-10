@@ -11,7 +11,7 @@ const app = express();
 
 require('dotenv').config();
 mongoose
-  .connect("mongodb+srv://dvir16:s56SasepLBYNUDXi@cluster0-7vdf2.mongodb.net/node-angular?retryWrites=true")
+  .connect("mongodb+srv://dvir16:"+process.env.mongodbpassword+"@cluster0-7vdf2.mongodb.net/node-angular?retryWrites=true")
   .then(() => {
     console.log("Connected to database!");
   })
