@@ -28,7 +28,8 @@ export class PostsService {
               id: post._id,
               imagePath: post.imagePath,
               creator: post.creator,
-              numOflikes: post.numOflikes
+              numOflikes: post.numOflikes,
+              userIdThatLiked: post.userIdThatLiked
             };
           }), maxPosts : postData.maxPosts};
         })
@@ -51,6 +52,7 @@ export class PostsService {
       imagePath: string;
       creator: string;
       numOfLikes: string;
+      userIdThatLiked: string;
     }>(BACKEND_URL + id);
   }
 
@@ -60,6 +62,7 @@ export class PostsService {
     postData.append('content', content);
     postData.append('image', image, title);
     postData.append('numOfLikes', '0');
+    postData.append('userIdThatLiked','null');
     this.http.post<{ message: string; post: Post }>(
         BACKEND_URL,
         postData
@@ -69,7 +72,7 @@ export class PostsService {
       });
   }
 
-  updatePost(id: string, title: string, content: string, image: File | string, numOflikes: string) {
+  updatePost(id: string, title: string, content: string, image: File | string, numOflikes: string, userIdThatLiked: string) {
     let postData: Post | FormData;
     if (typeof image === 'object') {
       postData = new FormData();
@@ -78,6 +81,7 @@ export class PostsService {
       postData.append('content', content);
       postData.append('image', image, title);
       postData.append('numOfLikes', numOflikes);
+      postData.append('userIdThatLiked',userIdThatLiked);
     } else {
       postData = {
         id,
@@ -85,7 +89,8 @@ export class PostsService {
         content,
         imagePath: image,
         creator: null,
-        numOflikes: numOflikes
+        numOflikes: numOflikes,
+        userIdThatLiked: userIdThatLiked
       };
     }
     this.http

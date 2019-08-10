@@ -8,7 +8,8 @@ exports.createPost = (req, res, next) => {
     content: req.body.content,
     imagePath: url + "/images/" + req.file.filename,
     creator: req.userData.userId,
-    numOflikes: '0'
+    numOflikes: '0',
+    userIdThatLiked: 'null'
   });
   post
     .save()
@@ -40,7 +41,8 @@ exports.updatePost = (req, res, next) => {
     content: req.body.content,
     imagePath: imagePath,
     creator: req.userData.userId,
-    numOflikes: req.body.numOflikes
+    numOflikes: req.body.numOflikes,
+    userIdThatLiked: req.body.userIdThatLiked
   });
   Post.updateOne(
     { _id: req.params.id, creator: req.userData.userId },
