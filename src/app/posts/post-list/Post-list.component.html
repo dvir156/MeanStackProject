@@ -33,8 +33,7 @@
     </button>
 
 
-    <button  mat-button(click)="onLike()">Like</button>
-<!--    <button  color="accent"  mat-button *ngIf="numOfLikes==1" (click)="onDisLike()">Dislike</button>-->
+
 
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
       <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
