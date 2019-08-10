@@ -29,13 +29,22 @@ export class UserProfileService {
   }
 
 
-getInfo(userId: string) {
-  this.http.get(BACKEND_URL + "userinfo/:id" + userId).subscribe(data => {
+  getInfo(userId: string) {
+   this.http.get(BACKEND_URL + "userinfo/:id" + userId).subscribe(data => {
     this.userProfile = data;
     this.userUpdate.next(this.userProfile);
   });
 }
+
   getUserUpdate(){
     return this.userUpdate.asObservable();
   }
+
+  profileCheck(userId: string) {
+    this.http.get(BACKEND_URL + "userinfo/:id" + userId).subscribe(data => {
+      this.userProfile = data;
+      this.userUpdate.next(this.userProfile);
+    });
+  }
+
 }

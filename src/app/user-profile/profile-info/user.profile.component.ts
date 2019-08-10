@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
   form: FormGroup;
   user: UserProfileModel;
+  profile = false;
 
   constructor(public userProfileService: UserProfileService, private authService: AuthService) {
   }
@@ -41,9 +42,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.userProfileService.getInfo(this.authService.getUserId());
     this.userSub = this.userProfileService.getUserUpdate()
       .subscribe((fromServer: any) => {
-        this.user =cloneDeep(fromServer);
+        this.user = cloneDeep(fromServer);
       });
   }
+
 
   ngOnDestroy(){
     this.userSub.unsubscribe();

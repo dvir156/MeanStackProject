@@ -8,6 +8,6 @@ router.post("/createdata", checkAuth, userProfile.newInfo);
 
 router.get("/userinfo/:id", checkAuth, userProfile.getAllUserData);
 
-//router.update("/checkprofile/:id",checkAuth,userProfile.profileExists);
+router.get("/checkprofile/:id",checkAuth,userProfile.profileExists);
 
 module.exports = router;
