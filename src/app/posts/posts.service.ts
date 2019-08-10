@@ -27,7 +27,8 @@ export class PostsService {
               content: post.content,
               id: post._id,
               imagePath: post.imagePath,
-              creator: post.creator
+              creator: post.creator,
+              numOflikes: post.numOflikes
             };
           }), maxPosts : postData.maxPosts};
         })
@@ -49,6 +50,7 @@ export class PostsService {
       content: string;
       imagePath: string;
       creator: string;
+      numOfLikes: string;
     }>(BACKEND_URL + id);
   }
 
@@ -57,8 +59,8 @@ export class PostsService {
     postData.append('title', title);
     postData.append('content', content);
     postData.append('image', image, title);
-    this.http
-      .post<{ message: string; post: Post }>(
+    postData.append('numOfLikes', '0');
+    this.http.post<{ message: string; post: Post }>(
         BACKEND_URL,
         postData
       )
@@ -81,7 +83,8 @@ export class PostsService {
         title,
         content,
         imagePath: image,
-        creator: null
+        creator: null,
+        numOflikes: '0'
       };
     }
     this.http

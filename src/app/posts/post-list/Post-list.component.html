@@ -19,6 +19,7 @@
       <img [src]="post.imagePath" [alt]="post.title">
     </div>
     <p>{{ post.content }}</p>
+
     <mat-divider></mat-divider>
     <mat-menu #appMenu="matMenu">
       <mat-list *ngFor="let users of usersThatLiked">
@@ -28,13 +29,12 @@
     </mat-menu>
 
     <button mat-icon-button [matMenuTriggerFor]="appMenu">
-      Likes : {{numOfLikes}}
+      Likes : {{ post.numOflikes}}
     </button>
 
 
-    <p></p>
-    <button  mat-button *ngIf="numOfLikes==0" (click)="onLike()">Like</button>
-    <button  color="accent"  mat-button *ngIf="numOfLikes==1" (click)="onDisLike()">Dislike</button>
+<!--    <button  mat-button(click)="onLike()">Like</button>-->
+<!--    <button  color="accent"  mat-button *ngIf="numOfLikes==1" (click)="onDisLike()">Dislike</button>-->
 
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
       <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>

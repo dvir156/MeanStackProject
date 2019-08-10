@@ -9,7 +9,6 @@ export class PostNameFilterPipe implements PipeTransform {
     if (!posts || !searchTerm) {
       return posts;
     }
-
     return posts.filter(post =>
       post.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
   }

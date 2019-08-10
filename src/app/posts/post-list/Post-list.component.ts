@@ -1,23 +1,21 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { PageEvent } from "@angular/material";
-import { Subscription } from "rxjs";
-import { Post } from "../post.model";
-import { PostsService } from "../posts.service";
-import { AuthService } from "../../auth/auth.service";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PageEvent } from '@angular/material';
+import { Subscription } from 'rxjs';
+import { Post } from '../post.model';
+import { PostsService } from '../posts.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
-  selector: "app-post-list",
-  templateUrl: "./post-list.component.html",
-  styleUrls: ["./post-list.component.css"],
+  selector: 'app-post-list',
+  templateUrl: './post-list.component.html',
+  styleUrls: ['./post-list.component.css'],
 
 })
 export class PostListComponent implements OnInit, OnDestroy {
 
   posts: Post[] = [];
-  usersThatLiked:string[] = [];
   isLoading = false;
   totalPosts = 0;
-  numOfLikes =0;
   postsPerPage = 5;
   currentPage = 1;
   pageSizeOptions = [1, 2, 5, 10];
@@ -36,12 +34,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.usersThatLiked.push("blabla");
-    this.usersThatLiked.push("blabla2");
-    this.usersThatLiked.push("blabla3");
-    this.usersThatLiked.push("blabla4");
-    this.usersThatLiked.push("blabla5");
-    this.usersThatLiked.push("blabla6");
+
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
@@ -72,7 +65,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.postsService.deletePost(postId).subscribe(() => {
       this.postsService.getPosts(this.postsPerPage, this.currentPage);
-    }, ()=>{
+    }, () => {
       this.isLoading = false;
     });
   }
@@ -84,10 +77,10 @@ export class PostListComponent implements OnInit, OnDestroy {
 
 
   onLike() {
-    this.numOfLikes +=1;
+
   }
 
   onDisLike() {
-    this.numOfLikes -=1;
+    // this.numOfLikes -=1;
   }
 }

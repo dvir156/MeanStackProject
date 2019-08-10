@@ -9,26 +9,26 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-// require('dotenv').config();
-// mongoose
-//   .connect("mongodb+srv://dvir16:"+process.env.mongodbpassword+"@cluster0-7vdf2.mongodb.net/node-angular")
-//   .then(() => {
-//     console.log("Connected to database!");
-//   })
-//   .catch(() => {
-//     console.log("Connection failed!");
-//   });
+require('dotenv').config();
+mongoose
+  .connect("mongodb+srv://dvir16:s56SasepLBYNUDXi@cluster0-7vdf2.mongodb.net/node-angular?retryWrites=true")
+  .then(() => {
+    console.log("Connected to database!");
+  })
+  .catch(() => {
+    console.log("Connection failed!");
+  });
 
 
 /*                              Local mongo                                  */
-   mongoose.connect('mongodb://localhost:27017/MeanStackProject', {useNewUrlParser: true});
-   const connection = mongoose.connection;
-   connection.on('error', (error) => {
-   console.log('Error connecting to MongoDB', error);
-   });
-   connection.once('open', () => {
-   console.log('Connected to MongoDB');
-   });
+   // mongoose.connect('mongodb://localhost:27017/MeanStackProject', {useNewUrlParser: true});
+   // const connection = mongoose.connection;
+   // connection.on('error', (error) => {
+   // console.log('Error connecting to MongoDB', error);
+   // });
+   // connection.once('open', () => {
+   // console.log('Connected to MongoDB');
+   // });
 
 
 

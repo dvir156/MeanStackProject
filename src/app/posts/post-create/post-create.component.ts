@@ -14,8 +14,7 @@ import {AuthService} from '../../auth/auth.service';
 })
 
 export class PostCreateComponent implements OnInit, OnDestroy {
-  enteredTitle = '';
-  enteredContent = '';
+
   post: Post;
   isLoading = false;
   form: FormGroup;
@@ -52,7 +51,8 @@ export class PostCreateComponent implements OnInit, OnDestroy {
             title: postData.title,
             content: postData.content,
             imagePath: postData.imagePath,
-            creator: postData.creator
+            creator: postData.creator,
+            numOflikes: '0'
           };
           this.form.setValue({
             title: this.post.title,
@@ -98,6 +98,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
       );
     }
     this.form.reset();
+
   }
 
   ngOnDestroy() {
