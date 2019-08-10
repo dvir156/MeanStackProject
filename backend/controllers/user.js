@@ -19,7 +19,7 @@ exports.createUser = (req, res, next) => { //Dvir it's export-s-! and not export
       })
       .catch(err => {
         res.status(500).json({
-          message: "Invalid authentication credentials!"
+          message: "this is email in use!"
         });
       });
   });

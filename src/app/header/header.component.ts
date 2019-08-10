@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit , OnDestroy {
   private authListenerSubs: Subscription;
   private user: UserProfileModel;
   private userSub: Subscription;
+  login = true;
 
   constructor(private authService: AuthService,public userProfileService: UserProfileService) {}
 
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit , OnDestroy {
       .subscribe((fromServer: any) => {
         this.user = fromServer;
       });
+
   }
 
   onLogout() {

@@ -3,7 +3,6 @@ const UserProfile = require("../models/userProfileModel");
 
 exports.newInfo = (req, res, next) => {
   const data = new UserProfile({
-
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     age: req.body.age,
@@ -28,7 +27,7 @@ exports.getAllUserData = (req, res, next) => {
     if (info) {
       res.status(200).json(info);
     } else {
-      res.status(404).json({ message: "user not found!" });
+      res.status(404).json({ message: "user profile not found need to create" });
     }
   }).catch(error => {
     res.status(500).json({
