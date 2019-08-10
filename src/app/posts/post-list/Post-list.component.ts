@@ -33,9 +33,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   searchTermByName: string;
   searchTermByContent: string;
   likedPost = true;
+  usersThatLiked:Array<string> = [];
 
   ngOnInit() {
-
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
@@ -53,6 +53,7 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
       });
+
   }
 
   onChangedPage(pageData: PageEvent) {
@@ -82,20 +83,29 @@ export class PostListComponent implements OnInit, OnDestroy {
     num += 1;
     post.numOflikes = String(num);
     this.likedPost = false;
-    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes);
+    //add the user id to users
+    //TODO
 
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes,userId);
   }
 
-  onDislike(post: Post) {
+  onDislike(post: Post,userId: string) {
     let num = parseInt(post.numOflikes, 10);
     num -= 1;
     post.numOflikes = String(num);
     this.likedPost = true;
-    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes);
-
+    //TODO
+    //delete this user from the list
+    //this.usersThatLiked.filter(e => e !== userId);
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, userId);
   }
 
   UserLikedThisPost() {
     return this.likedPost;
+  }
+
+  updateList(post: Post) {
+    this.usersThatLiked = [];
+    this.usersThatLiked.push(post.userIdThatLiked);
   }
 }

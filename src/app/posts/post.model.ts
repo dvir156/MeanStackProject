@@ -5,4 +5,5 @@ export interface Post {
   imagePath: string;
   creator: string;
   numOflikes: string;
+  userIdThatLiked: string;
 }
