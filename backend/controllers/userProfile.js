@@ -23,13 +23,19 @@ exports.newInfo = (req, res, next) => {
 };
 
 exports.getAllUserData = (req, res, next) => {
-  console.log(req.userData.creator);
-  UserProfile.findById(req.userData.creator).then(info =>{
-    console.log(info.name);
-      res.status(200).json(info);
+  UserProfile.find(req.body.creator).then(info => {
+    if (info) {
+      res.status(200).json({
+        message: "get user information",
+        data: info
+      });
+    } else {
+      res.status(404).json({ message: "user not found!" });
+    }
   }).catch(error => {
     res.status(500).json({
       message: "Fetching Error"
-    })
+    });
   });
 };
+

@@ -8,7 +8,7 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  constructor(private authService: AuthService,private titleService: Title ) {
+  constructor(private authService: AuthService, private titleService: Title ) {
 
   }
   public setTitle( newTitle: string) {
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.authService.autoAuthUser();
-    this.setTitle("SocialNetwork")
+    this.setTitle('SocialNetwork');
   }
 
 }

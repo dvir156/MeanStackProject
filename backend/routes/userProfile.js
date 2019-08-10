@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.post("/createdata", checkAuth, userProfile.newInfo);
 
-router.get("/userinfo", checkAuth, userProfile.getAllUserData)
+router.get("/userinfo/:id", checkAuth, userProfile.getAllUserData);
+
 module.exports = router;
