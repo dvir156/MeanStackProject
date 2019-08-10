@@ -77,11 +77,13 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
 
-  onLike(post: Post) {
+  onLike(post: Post, userId: string) {
     let num = parseInt(post.numOflikes, 10);
     num += 1;
     post.numOflikes = String(num);
     this.likedPost = false;
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes);
+
   }
 
   onDislike(post: Post) {
@@ -89,6 +91,8 @@ export class PostListComponent implements OnInit, OnDestroy {
     num -= 1;
     post.numOflikes = String(num);
     this.likedPost = true;
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes);
+
   }
 
   UserLikedThisPost() {

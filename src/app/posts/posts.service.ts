@@ -69,7 +69,7 @@ export class PostsService {
       });
   }
 
-  updatePost(id: string, title: string, content: string, image: File | string) {
+  updatePost(id: string, title: string, content: string, image: File | string, numOflikes: string) {
     let postData: Post | FormData;
     if (typeof image === 'object') {
       postData = new FormData();
@@ -77,6 +77,7 @@ export class PostsService {
       postData.append('title', title);
       postData.append('content', content);
       postData.append('image', image, title);
+      postData.append('numOfLikes', numOflikes);
     } else {
       postData = {
         id,
@@ -84,7 +85,7 @@ export class PostsService {
         content,
         imagePath: image,
         creator: null,
-        numOflikes: '0'
+        numOflikes: numOflikes
       };
     }
     this.http

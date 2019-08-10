@@ -40,7 +40,7 @@ exports.updatePost = (req, res, next) => {
     content: req.body.content,
     imagePath: imagePath,
     creator: req.userData.userId,
-    numOflikes: '0'
+    numOflikes: req.body.numOflikes
   });
   Post.updateOne(
     { _id: req.params.id, creator: req.userData.userId },

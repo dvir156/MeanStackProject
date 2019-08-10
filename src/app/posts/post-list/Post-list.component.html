@@ -32,7 +32,7 @@
       Likes : {{ post.numOflikes}}
     </button>
     <p></p>
-    <button mat-button *ngIf="UserLikedThisPost()" (click)="onLike(post)">Like</button>
+    <button mat-button *ngIf="UserLikedThisPost()" (click)="onLike(post,userId)">Like</button>
     <button mat-button *ngIf="!UserLikedThisPost()" (click)="onDislike(post)">Dislike</button>
 
 
