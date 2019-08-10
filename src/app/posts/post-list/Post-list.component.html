@@ -1,3 +1,17 @@
+
+<head>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title></title>
+
+</head>
+
+<body>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/he_IL/sdk.js#xfbml=1&version=v4.0"></script>
+
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
 
@@ -45,3 +59,62 @@
 <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
                *ngIf="posts.length > 0"></mat-paginator>
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>
+
+<footer class="footer-distributed">
+
+  <div class="footer-left">
+
+    <h3>Company<span>logo</span></h3>
+
+    <p class="footer-links">
+      <a href="#">Home</a>
+      ·
+      <a href="#">About</a>
+      ·
+      <a href="#">Contact</a>
+
+    </p>
+
+    <p class="footer-company-name">ODAY Social Networking &copy; 2019</p>
+  </div>
+
+  <div class="footer-center">
+
+    <div>
+      <i class="fa fa-map-marker"></i>
+      <p><span>Eli Wiesel 2 Street</span> Rishon LeTsiyon, Israel</p>
+    </div>
+
+    <div>
+      <i class="fa fa-phone"></i>
+      <p>052-602-0841</p>
+    </div>
+
+    <div>
+      <i class="fa fa-envelope"></i>
+      <p><a href="mailto:support@company.com">support@company.com</a></p>
+    </div>
+
+  </div>
+
+  <div class="footer-right">
+
+    <p class="footer-company-about">
+      <span>About the company</span>
+      Web Application Project By Dvir Barel, Alex Moshinsky, Orel Ezhakian and Yelena Sher.
+    </p>
+
+    <div class="footer-icons">
+
+      <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+      <a href="https://twitter.com/?lang=he"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+      <a href="https://github.com/dvir156/MeanStackProject"><i class="fa fa-github"></i></a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
