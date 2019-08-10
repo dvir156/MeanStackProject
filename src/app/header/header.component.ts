@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit , OnDestroy {
   private authListenerSubs: Subscription;
   private user: UserProfileModel;
   private userSub: Subscription;
-  login = true;
 
   constructor(private authService: AuthService,public userProfileService: UserProfileService) {}
 
@@ -30,11 +29,13 @@ export class HeaderComponent implements OnInit , OnDestroy {
     this.userSub = this.userProfileService.getUserUpdate()
       .subscribe((fromServer: any) => {
         this.user = fromServer;
+        console.log(this.user);
       });
 
   }
 
   onLogout() {
+    this.user = null;
     this.authService.logout();
   }
 

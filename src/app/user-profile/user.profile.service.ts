@@ -30,7 +30,7 @@ export class UserProfileService {
 
 
   getInfo(userId: string) {
-   this.http.get(BACKEND_URL + "userinfo/:id" + userId).subscribe(data => {
+   this.http.get(BACKEND_URL + "userinfo/:id " + userId).subscribe(data => {
     this.userProfile = data;
     this.userUpdate.next(this.userProfile);
   });

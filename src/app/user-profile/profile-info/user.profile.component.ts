@@ -40,9 +40,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userProfileService.getInfo(this.authService.getUserId());
+    console.log("user id: "+this.authService.getUserId());
     this.userSub = this.userProfileService.getUserUpdate()
       .subscribe((fromServer: any) => {
-        this.user = cloneDeep(fromServer);
+        this.user = fromServer;
       });
   }
 
