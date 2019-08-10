@@ -23,12 +23,9 @@ exports.newInfo = (req, res, next) => {
 };
 
 exports.getAllUserData = (req, res, next) => {
-  UserProfile.find(req.body.creator).then(info => {
+  UserProfile.findOne(req.body.creator).then(info => {
     if (info) {
-      res.status(200).json({
-        message: "get user information",
-        data: info
-      });
+      res.status(200).json(info);
     } else {
       res.status(404).json({ message: "user not found!" });
     }

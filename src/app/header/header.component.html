@@ -5,7 +5,7 @@
   <ul>
     <li *ngIf="userIsAuthenticated">
       <div class="dropdown">
-        <button class="dropbtn">{{ "user name" }}
+        <button class="dropbtn" *ngIf="user">{{ user.firstName }}
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">

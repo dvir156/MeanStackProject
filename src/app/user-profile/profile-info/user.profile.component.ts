@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {UserProfileModel} from '../user.profile.model';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {AuthService} from '../../auth/auth.service';
+import * as cloneDeep from 'lodash/cloneDeep'
 
 
 @Component({
@@ -20,7 +21,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   form: FormGroup;
   user: UserProfileModel;
 
-  constructor(public userProfileService: UserProfileService, public route: ActivatedRoute, private authService: AuthService) {
+  constructor(public userProfileService: UserProfileService, private authService: AuthService) {
   }
 
   createData(data: NgForm) {
@@ -39,10 +40,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userProfileService.getInfo(this.authService.getUserId());
     this.userSub = this.userProfileService.getUserUpdate()
-      .subscribe((fromServer: UserProfileModel) => {
-        this.user = fromServer;
+      .subscribe((fromServer: any) => {
+        this.user =cloneDeep(fromServer);
       });
-    console.log(this.user);
   }
 
   ngOnDestroy(){
