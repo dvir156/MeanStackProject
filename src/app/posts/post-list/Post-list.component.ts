@@ -96,7 +96,8 @@ export class PostListComponent implements OnInit, OnDestroy {
     post.numOflikes = String(num);
     //TODO
     //delete this user from the list
-    //this.usersThatLiked.filter(e => e !== userId);
+    this.usersThatLiked.filter(e => e !== userId);
+    post.userIdThatLiked.replace(userId,'');
     this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, userId);
   }
 
