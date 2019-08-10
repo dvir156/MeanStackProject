@@ -13,6 +13,13 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class PostListComponent implements OnInit, OnDestroy {
 
+
+
+  constructor(
+    public postsService: PostsService,
+    private authService: AuthService
+  ) {}
+
   posts: Post[] = [];
   isLoading = false;
   totalPosts = 0;
@@ -25,13 +32,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription;
   searchTermByName: string;
   searchTermByContent: string;
-
-
-
-  constructor(
-    public postsService: PostsService,
-    private authService: AuthService
-  ) {}
+  likedPost = true;
 
   ngOnInit() {
 
@@ -76,11 +77,21 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
 
-  onLike() {
-
+  onLike(post: Post) {
+    let num = parseInt(post.numOflikes, 10);
+    num += 1;
+    post.numOflikes = String(num);
+    this.likedPost = false;
   }
 
-  onDisLike() {
-    // this.numOfLikes -=1;
+  onDislike(post: Post) {
+    let num = parseInt(post.numOflikes, 10);
+    num -= 1;
+    post.numOflikes = String(num);
+    this.likedPost = true;
+  }
+
+  UserLikedThisPost() {
+    return this.likedPost;
   }
 }
