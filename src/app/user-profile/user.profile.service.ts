@@ -14,8 +14,7 @@ export class UserProfileService {
   private userUpdate = new Subject<UserProfileModel>();
 
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   createProfileData(firstName: string, lastName: string, age: number, country: string) {
     const userData: UserProfileModel = {

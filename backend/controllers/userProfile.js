@@ -1,5 +1,6 @@
 const UserProfile = require("../models/userProfileModel");
 
+
 exports.newInfo = (req, res, next) => {
   const data = new UserProfile({
 
@@ -36,3 +37,12 @@ exports.getAllUserData = (req, res, next) => {
   });
 };
 
+exports.profileExists = (req,res,next) =>{
+  UserProfile.findOne(res.body.creator).then(info =>{
+    if(info != null){
+      res.status(500).json({
+        message: "You already create profile"
+      })
+    }
+  });
+};
