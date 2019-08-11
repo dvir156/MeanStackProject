@@ -2,8 +2,16 @@
   <input  type="text" class="form-control" placeholder="Search Name"
           style="width:300px; border: 2px groove;
   border-radius: 4px;" [(ngModel)]="searchTermByName" />
+  <input  type="text" class="form-control" placeholder="By Last Name"
+          style="width:300px; border: 2px groove;
+  border-radius: 4px;" [(ngModel)]="searchTermByLastName" />
+  <input  type="text" class="form-control" placeholder="By Country"
+          style="width:300px; border: 2px groove;
+  border-radius: 4px;" [(ngModel)]="searchTermByCountry" />
 </div>
-<table mat-table [dataSource]="dataSource |NameFilter:searchTermByName" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource |NameFilter:searchTermByName|lastNameFilter:searchTermByLastName
+|countryFilter:searchTermByCountry"
+       class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -34,5 +42,10 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-
+<mat-divider></mat-divider>
+<mat-card>
+GroupBy Countries:
+<ul>
+  <li *ngFor="let object of dataSource | groupBy:'country'">{{ object.key }}</li>
+</ul>
+</mat-card>

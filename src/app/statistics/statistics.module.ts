@@ -4,13 +4,19 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularMaterialModule} from '../angular-material.module';
 import {RouterModule} from '@angular/router';
 import {StatisticsComponent} from './statistics-table/statistics.component';
-import {MatPaginatorModule, MatSortModule, MatTableModule} from '@angular/material';
+import {MatPaginatorModule, MatSidenavModule, MatSortModule, MatTableModule} from '@angular/material';
 import {NameFilterPipe} from './name-filter';
+import {GroupByPipe} from './groupBy';
+import {LastnameFilter} from './lastname-filter';
+import {CountryFilter} from './country-filter';
 
 @NgModule({
   declarations: [
     StatisticsComponent,
-    NameFilterPipe
+    NameFilterPipe,
+    GroupByPipe,
+    LastnameFilter,
+    CountryFilter
   ],
   imports: [
     CommonModule,
@@ -21,6 +27,7 @@ import {NameFilterPipe} from './name-filter';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSidenavModule,
 
   ]
 })

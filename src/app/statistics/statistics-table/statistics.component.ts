@@ -17,7 +17,8 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   dataSource: UserProfileModel[] = [];
   private userSub: Subscription;
   searchTermByName: string;
-
+  searchTermByLastName: string;
+  searchTermByCountry: string;
 
 
   constructor(private authService: AuthService, private statisticsService: StatisticsService) {}
