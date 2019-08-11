@@ -4,7 +4,7 @@ import {HeaderComponent} from './header/header.component';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AppRoutingModule} from './app-routing.module';
+import {allAppRoutes, AppRoutingModule} from './app-routing.module';
 import {AuthInterceptor} from './auth/auth-interceptor';
 import {ErrorInterceptor} from './error-interceptor';
 import {ErrorComponent} from './error/error.component';
@@ -12,12 +12,14 @@ import {AngularMaterialModule} from './angular-material.module';
 import {PostsModule} from './posts/posts.module';
 import {UserProfileModule} from './user-profile/user.profile.module';
 import {MapMdoule} from './map/map.mdoule';
+import { WeatherComponent } from './weather/weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,

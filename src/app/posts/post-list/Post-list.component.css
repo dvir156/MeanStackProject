@@ -36,7 +36,9 @@ mat-paginator {
 
   padding: 55px 50px;
   margin-top: 80px;
+  margin-bottom: 0;
   margin-left: 0;
+
 
 }
 
@@ -195,6 +197,11 @@ mat-paginator {
     margin-left: 0;
   }
 
+
+}
+
+.weather{
+position: center;
 }
 
 

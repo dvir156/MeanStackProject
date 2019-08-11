@@ -3,26 +3,18 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:500" >
+
   <title></title>
 
 </head>
 
 <body>
 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/he_IL/sdk.js#xfbml=1&version=v4.0"></script>
 
-<mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
 
-    <div class="form-group">
-      <input  type="text" class="form-control" placeholder="Search Post"
-           style="width:300px; border: 2px groove;
-  border-radius: 4px;" [(ngModel)]="searchTermByName" />
-      <input  type="text" class="form-control" placeholder="By Post Content"
-              style="width:300px; border: 2px groove;
-  border-radius: 4px;" [(ngModel)]="searchTermByContent" />
-    </div>
+
+<mat-accordion>
   <mat-checkbox><span style="font-size: small;">include picture</span></mat-checkbox>
 
   <mat-expansion-panel *ngFor="let post of posts | postNameFilter:searchTermByName|postContentFilter:searchTermByContent" >
@@ -59,6 +51,12 @@
 <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
                *ngIf="posts.length > 0"></mat-paginator>
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>
+
+<div class="weather">
+
+<!-- weather widget start --><a target="_blank" href="https://www.booked.net/weather/rishon-leziyyon-123440"><img src="https://w.bookcdn.com/weather/picture/4_123440_1_1_4782cf_202_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=27700"  alt="booked.net"/></a><!-- weather widget end -->
+
+</div>
 
 <footer class="footer-distributed">
 
@@ -118,3 +116,5 @@
 </footer>
 
 </body>
+
+
