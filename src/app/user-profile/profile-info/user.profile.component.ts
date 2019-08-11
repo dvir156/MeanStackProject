@@ -1,11 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserProfileService} from '../user.profile.service';
-import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {FormGroup, NgForm} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {UserProfileModel} from '../user.profile.model';
-import {ActivatedRoute, ParamMap} from '@angular/router';
 import {AuthService} from '../../auth/auth.service';
-import * as cloneDeep from 'lodash/cloneDeep'
 
 
 @Component({
@@ -40,7 +38,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userProfileService.getInfo(this.authService.getUserId());
-    console.log("user id: "+this.authService.getUserId());
     this.userSub = this.userProfileService.getUserUpdate()
       .subscribe((fromServer: any) => {
         this.user = fromServer;

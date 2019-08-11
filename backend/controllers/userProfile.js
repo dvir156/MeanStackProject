@@ -37,12 +37,10 @@ exports.getAllUserData = (req, res, next) => {
   });
 };
 
-exports.profileExists = (req,res,next) =>{
-  UserProfile.findOne(res.body.creator).then(info =>{
-    if(info != null){
-      res.status(500).json({
-        message: "You already create profile"
+exports.profilesData = (req, res, next) =>{
+   UserProfile.find().then(document => {
+      res.status(200).json({
+        userProfile: document
       })
-    }
-  });
+   })
 };

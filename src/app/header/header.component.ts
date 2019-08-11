@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit , OnDestroy {
     this.userSub = this.userProfileService.getUserUpdate()
       .subscribe((fromServer: any) => {
         this.user = fromServer;
-        console.log(this.user);
       });
 
   }

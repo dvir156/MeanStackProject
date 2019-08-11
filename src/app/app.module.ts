@@ -12,6 +12,7 @@ import {AngularMaterialModule} from './angular-material.module';
 import {PostsModule} from './posts/posts.module';
 import {UserProfileModule} from './user-profile/user.profile.module';
 import {MapMdoule} from './map/map.mdoule';
+import {StatisticsModule} from './statistics/statistics.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MapMdoule} from './map/map.mdoule';
     HttpClientModule,
     PostsModule,
     UserProfileModule,
-    MapMdoule
+    MapMdoule,
+    StatisticsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
