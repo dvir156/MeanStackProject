@@ -7,18 +7,18 @@ import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 
 
-const BACKEND_URL = environment.apiUrl + "/userprofile/";
+const BACKEND_URL = environment.apiUrl + '/userprofile/';
 
 @Injectable({ providedIn: 'root' })
 export class StatisticsService {
-  private userProfile: UserProfileModel[] =[];
+  private userProfile: UserProfileModel[] = [];
   private userSatisiticsUpdate = new Subject<{userProfile: UserProfileModel[]}>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
 
   getAllUsers() {
-    this.http.get<{userProfile: any}>(BACKEND_URL + "alldata")
+    this.http.get<{userProfile: any}>(BACKEND_URL + 'alldata')
       .pipe(
         map(userData => {
         return { userProfile: userData.userProfile.map(moreData => {
@@ -29,7 +29,7 @@ export class StatisticsService {
               country: moreData.country,
             };
           })
-        }
+        };
       })
       ).subscribe(transformedUserData => {
        this.userProfile = transformedUserData.userProfile;
@@ -44,7 +44,7 @@ export class StatisticsService {
    //   });
    // }
 
-  staticsticGet(){
+  staticsticGet() {
     return this.userSatisiticsUpdate.asObservable();
   }
 

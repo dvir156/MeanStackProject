@@ -12,10 +12,11 @@ import {StatisticsService} from '../statistics.service';
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.css']
 })
-export class StatisticsComponent implements OnInit, OnDestroy{
+export class StatisticsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['firstName', 'lastName', 'age', 'country'];
   dataSource: UserProfileModel[] = [];
   private userSub: Subscription;
+  searchTermByName: string;
 
 
 

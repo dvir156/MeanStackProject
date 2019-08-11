@@ -5,10 +5,12 @@ import {AngularMaterialModule} from '../angular-material.module';
 import {RouterModule} from '@angular/router';
 import {StatisticsComponent} from './statistics-table/statistics.component';
 import {MatPaginatorModule, MatSortModule, MatTableModule} from '@angular/material';
+import {NameFilterPipe} from './name-filter';
 
 @NgModule({
   declarations: [
-    StatisticsComponent
+    StatisticsComponent,
+    NameFilterPipe
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import {MatPaginatorModule, MatSortModule, MatTableModule} from '@angular/materi
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+
   ]
 })
 
