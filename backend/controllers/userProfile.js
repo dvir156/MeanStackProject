@@ -1,5 +1,6 @@
 const UserProfile = require("../models/userProfileModel");
 
+
 exports.newInfo = (req, res, next) => {
   const data = new UserProfile({
 
@@ -23,14 +24,11 @@ exports.newInfo = (req, res, next) => {
 };
 
 exports.getAllUserData = (req, res, next) => {
-  UserProfile.find(req.body.creator).then(info => {
+  UserProfile.findOne({creator: req.userData.userId}).then(info => {
     if (info) {
-      res.status(200).json({
-        message: "get user information",
-        data: info
-      });
+      res.status(200).json(info);
     } else {
-      res.status(404).json({ message: "user not found!" });
+      //res.status(404).json({ message: "user not found!" });
     }
   }).catch(error => {
     res.status(500).json({
@@ -39,3 +37,10 @@ exports.getAllUserData = (req, res, next) => {
   });
 };
 
+exports.profilesData = (req, res, next) =>{
+   UserProfile.find().then(document => {
+      res.status(200).json({
+        userProfile: document
+      })
+   })
+};

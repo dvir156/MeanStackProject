@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserProfileService} from '../user.profile.service';
-import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {FormGroup, NgForm} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {UserProfileModel} from '../user.profile.model';
-import {ActivatedRoute, ParamMap} from '@angular/router';
 import {AuthService} from '../../auth/auth.service';
 
 
@@ -19,8 +18,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
   form: FormGroup;
   user: UserProfileModel;
+  profile = false;
 
-  constructor(public userProfileService: UserProfileService, public route: ActivatedRoute, private authService: AuthService) {
+  constructor(public userProfileService: UserProfileService, private authService: AuthService) {
   }
 
   createData(data: NgForm) {
@@ -39,11 +39,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userProfileService.getInfo(this.authService.getUserId());
     this.userSub = this.userProfileService.getUserUpdate()
-      .subscribe((fromServer: UserProfileModel) => {
+      .subscribe((fromServer: any) => {
         this.user = fromServer;
       });
-    console.log(this.user);
   }
+
 
   ngOnDestroy(){
     this.userSub.unsubscribe();

@@ -4,19 +4,17 @@ import {HttpClient} from '@angular/common/http';
 import {UserProfileModel} from './user.profile.model';
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 
 const BACKEND_URL = environment.apiUrl + "/userprofile/";
 
 @Injectable({ providedIn: 'root' })
 export class UserProfileService {
-  private userProfile: UserProfileModel;
+  private userProfile: any;
   private userUpdate = new Subject<UserProfileModel>();
 
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   createProfileData(firstName: string, lastName: string, age: number, country: string) {
     const userData: UserProfileModel = {
@@ -31,30 +29,22 @@ export class UserProfileService {
   }
 
 
-//   getInfo(userId: string) {
-//      this.http.get(BACKEND_URL + "userinfo/:id" + userId).subscribe(res => {
-//        console.log(res);
-//      });
-//
-// }
-
-
-getInfo(userId: string) {
-  this.http.get<{message: string,userFromServer: any}>(BACKEND_URL + "userinfo/:id" + userId).pipe(map(user => {
-    return { userInfo: user.userFromServer.map(e => {
-
-      })
-
-
-
-    }
-
-  })).subscribe(moveData =>{
-  })
-    ;
-  }
+  getInfo(userId: string) {
+   this.http.get(BACKEND_URL + "userinfo/:id " + userId).subscribe(data => {
+    this.userProfile = data;
+    this.userUpdate.next(this.userProfile);
+  });
+}
 
   getUserUpdate(){
     return this.userUpdate.asObservable();
   }
+
+  profileCheck(userId: string) {
+    this.http.get(BACKEND_URL + "userinfo/:id" + userId).subscribe(data => {
+      this.userProfile = data;
+      this.userUpdate.next(this.userProfile);
+    });
+  }
+
 }

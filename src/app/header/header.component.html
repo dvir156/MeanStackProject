@@ -5,13 +5,14 @@
   <ul>
     <li *ngIf="userIsAuthenticated">
       <div class="dropdown">
-        <button class="dropbtn">{{ "user name" }}
+        <button class="dropbtn" *ngIf="user; else tryThis"> {{ user.firstName }}
           <i class="fa fa-caret-down"></i>
         </button>
+        <ng-template class="dropbtn" #tryThis>User Name</ng-template>
         <div class="dropdown-content">
           <a routerLink="/userprofile">User Profile</a>
           <a routerLink="/map">Map</a>
-          <a href="#">Statistics</a>
+          <a routerLink="/statistics">Users List</a>
         </div>
       </div>
     </li>

@@ -8,4 +8,6 @@ router.post("/createdata", checkAuth, userProfile.newInfo);
 
 router.get("/userinfo/:id", checkAuth, userProfile.getAllUserData);
 
+router.get("/alldata",checkAuth,userProfile.profilesData);
+
 module.exports = router;
