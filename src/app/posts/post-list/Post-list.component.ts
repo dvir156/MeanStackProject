@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PageEvent } from '@angular/material';
-import { Subscription } from 'rxjs';
-import { Post } from '../post.model';
-import { PostsService } from '../posts.service';
-import { AuthService } from '../../auth/auth.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {PageEvent} from '@angular/material';
+import {Subscription} from 'rxjs';
+import {Post} from '../post.model';
+import {PostsService} from '../posts.service';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-post-list',
@@ -32,9 +32,8 @@ export class PostListComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription;
   searchTermByName: string;
   searchTermByContent: string;
-  likedPost = true;
   usersThatLiked:Array<string> = [];
-
+  likedPost = true;
   ngOnInit() {
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
@@ -82,24 +81,27 @@ export class PostListComponent implements OnInit, OnDestroy {
   onLike(post: Post, userId: string) {
     let num = parseInt(post.numOflikes, 10);
     num += 1;
-    this.likedPost = false;
     post.numOflikes = String(num);
     //add the user id to users
     //TODO
-
+    this.likedPost = false;
     this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes,userId);
+
   }
 
   onDislike(post: Post,userId: string) {
     let num = parseInt(post.numOflikes, 10);
     num -= 1;
-    this.likedPost = true;
     post.numOflikes = String(num);
     //TODO
     //delete this user from the list
-    this.usersThatLiked.filter(e => e !== userId);
-    post.userIdThatLiked.replace(userId,'');
-    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, userId);
+    if(post.userIdThatLiked.includes(userId))
+    {
+      post.userIdThatLiked=post.userIdThatLiked.replace(userId, '');
+    }
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, post.userIdThatLiked);
+    location.reload();
+
   }
 
   UserLikedThisPost(post: Post, userId: string) {
@@ -109,5 +111,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   updateList(post: Post) {
     this.usersThatLiked = [];
     this.usersThatLiked.push(post.userIdThatLiked);
+    if(this.usersThatLiked.includes('null'))
+    {
+      this.usersThatLiked.pop();
+    }
   }
 }

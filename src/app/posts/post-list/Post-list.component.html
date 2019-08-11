@@ -28,11 +28,10 @@
 
     <button mat-icon-button (click)="updateList(post)" [matMenuTriggerFor]="appMenu">
       Likes : {{ post.numOflikes}}
-      {{likedPost}}
     </button>
     <p></p>
-    <button mat-button *ngIf="UserLikedThisPost(post,userId) && likedPost==true" (click)="onLike(post,userId)">Like</button>
-    <button mat-button *ngIf="!UserLikedThisPost(post,userId)&& likedPost==false" (click)="onDislike(post,userId)">Dislike</button>
+    <button mat-button *ngIf="UserLikedThisPost(post,userId) && likedPost == true" (click)="onLike(post,userId)">Like</button>
+    <button mat-button *ngIf="!UserLikedThisPost(post,userId) || likedPost == false" (click)="onDislike(post,userId)">Dislike</button>
 
 
 
