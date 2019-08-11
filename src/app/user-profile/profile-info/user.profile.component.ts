@@ -32,8 +32,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       data.value.LastName,
       data.value.Age,
       data.value.Country
-    )
-
+    );
+    window.location.reload();
   }
 
   ngOnInit() {
