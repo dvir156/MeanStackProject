@@ -13,12 +13,14 @@ import {PostsModule} from './posts/posts.module';
 import {UserProfileModule} from './user-profile/user.profile.module';
 import {MapMdoule} from './map/map.mdoule';
 import {StatisticsModule} from './statistics/statistics.module';
+import {FooterComponent} from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import {StatisticsModule} from './statistics/statistics.module';
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-              {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]
 })

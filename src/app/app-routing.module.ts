@@ -17,12 +17,6 @@ const routes: Routes = [
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
 ];
 
-import { WeatherComponent } from './weather/weather.component';
-
-export const allAppRoutes: Routes = [
-  { path: '', component: WeatherComponent }
-];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

@@ -44,12 +44,11 @@ ul {
 .dropdown .dropbtn {
   font-size: 16px;
   border: none;
-  outline: none;
+  outline: black;
   color: white;
-  /*padding: 14px 16px;*/
   background-color: inherit;
   font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+  margin: 0px; /* Important for vertical align on mobile phones */
 }
 
 /* Add a red background color to navbar links on hover */
@@ -62,13 +61,15 @@ ul {
   display: none;
   position: absolute;
   background-color: #c2185b;
-  min-width: 160px;
+  margin: 18px 150px 100px 0px;
+  min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
+  font-size: 16px;
   float: none;
   color: #ffffff;
   padding: 12px 16px;
@@ -76,6 +77,7 @@ ul {
   display: block;
   text-align: left;
   font-family: Arial, serif;
+
 }
 
 /* Add a grey background color to dropdown links on hover */
@@ -87,4 +89,13 @@ ul {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.dropbtn {
+  margin: 20px;
+
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 

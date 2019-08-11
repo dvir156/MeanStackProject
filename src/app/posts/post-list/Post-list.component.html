@@ -1,12 +1,8 @@
 
 <head>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:500" >
-
   <title></title>
-
 </head>
 
 <body>
@@ -16,7 +12,6 @@
 
 <mat-accordion>
   <mat-checkbox><span style="font-size: small;">include picture</span></mat-checkbox>
-
   <mat-expansion-panel *ngFor="let post of posts | postNameFilter:searchTermByName|postContentFilter:searchTermByContent" >
     <mat-expansion-panel-header>
       {{ post.title}}
@@ -54,65 +49,7 @@
 <div class="weather">
 
 <!-- weather widget start --><a target="_blank" href="https://www.booked.net/weather/rishon-leziyyon-123440"><img src="https://w.bookcdn.com/weather/picture/4_123440_1_1_4782cf_202_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=27700"  alt="booked.net"/></a><!-- weather widget end -->
-
 </div>
-
-<footer class="footer-distributed">
-
-  <div class="footer-left">
-
-    <h3>Company<span>logo</span></h3>
-
-    <p class="footer-links">
-      <a href="#">Home</a>
-      ·
-      <a href="#">About</a>
-      ·
-      <a href="#">Contact</a>
-
-    </p>
-
-    <p class="footer-company-name">ODAY Social Networking &copy; 2019</p>
-  </div>
-
-  <div class="footer-center">
-
-    <div>
-      <i class="fa fa-map-marker"></i>
-      <p><span>Eli Wiesel 2 Street</span> Rishon LeTsiyon, Israel</p>
-    </div>
-
-    <div>
-      <i class="fa fa-phone"></i>
-      <p>052-602-0841</p>
-    </div>
-
-    <div>
-      <i class="fa fa-envelope"></i>
-      <p><a href="mailto:support@company.com">support@company.com</a></p>
-    </div>
-
-  </div>
-
-  <div class="footer-right">
-
-    <p class="footer-company-about">
-      <span>About the company</span>
-      Web Application Project By Dvir Barel, Alex Moshinsky, Orel Ezhakian and Yelena Sher.
-    </p>
-
-    <div class="footer-icons">
-
-      <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-      <a href="https://twitter.com/?lang=he"><i class="fa fa-twitter"></i></a>
-      <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
-      <a href="https://github.com/dvir156/MeanStackProject"><i class="fa fa-github"></i></a>
-
-    </div>
-
-  </div>
-
-</footer>
 
 </body>
 
