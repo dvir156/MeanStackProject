@@ -6,6 +6,7 @@ import {AuthGuard} from './auth/auth.guard';
 import {UserProfileComponent} from './user-profile/profile-info/user.profile.component';
 import {MapComponent} from './map/map-google/map.component';
 import {StatisticsComponent} from './statistics/statistics-table/statistics.component';
+import {ChatComponent} from './web-socket/socket-io/chat.component';
 
 const routes: Routes = [
   { path: '', component: PostListComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'userprofile', component: UserProfileComponent , canActivate: [AuthGuard]},
   { path: 'statistics', component: StatisticsComponent , canActivate: [AuthGuard]},
   { path: 'map', component: MapComponent , canActivate: [AuthGuard]},
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
 ];
 

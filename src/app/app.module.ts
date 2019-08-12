@@ -14,13 +14,16 @@ import {UserProfileModule} from './user-profile/user.profile.module';
 import {MapMdoule} from './map/map.mdoule';
 import {StatisticsModule} from './statistics/statistics.module';
 import {FooterComponent} from './footer/footer.component';
+import {ChatComponent} from './web-socket/socket-io/chat.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ErrorComponent,
-    FooterComponent
+    FooterComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import {FooterComponent} from './footer/footer.component';
     UserProfileModule,
     MapMdoule,
     StatisticsModule,
-
+    FormsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
