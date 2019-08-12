@@ -15,6 +15,7 @@ import {MapMdoule} from './map/map.mdoule';
 import {StatisticsModule} from './statistics/statistics.module';
 import {FooterComponent} from './footer/footer.component';
 import {WeatherModule} from './weather/weather.module';
+import {WebSocketModule} from './web-socket/web.socket.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {WeatherModule} from './weather/weather.module';
     UserProfileModule,
     MapMdoule,
     StatisticsModule,
-    WeatherModule
+    WeatherModule,
+    WebSocketModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

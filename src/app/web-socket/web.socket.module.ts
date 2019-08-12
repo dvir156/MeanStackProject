@@ -3,15 +3,12 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularMaterialModule} from '../angular-material.module';
 import {RouterModule} from '@angular/router';
-import {WeatherComponent} from './weather-data/weather.component';
+import {ChatComponent} from './socket-io/chat.component';
 
 
 @NgModule({
   declarations: [
-    WeatherComponent
-  ],
-  exports: [
-    WeatherComponent
+    ChatComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +18,7 @@ import {WeatherComponent} from './weather-data/weather.component';
     FormsModule,
   ]
 })
-export class WeatherModule {
+
+export class WebSocketModule {
 
 }
