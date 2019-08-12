@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WebSocketService} from '../web.socket.service';
+import {AuthService} from '../../auth/auth.service';
+import {UserProfileModel} from '../../user-profile/user.profile.model';
+import {UserProfileService} from '../../user-profile/user.profile.service';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -10,13 +14,13 @@ import {WebSocketService} from '../web.socket.service';
 
 })
 
-export class ChatComponent{
-  user: string;
-  room: string;
+export class ChatComponent implements OnInit , OnDestroy{
+  room: string = "Lobby";
   messageArray:Array<{user: String,message: String}>=[];
   messageText: string;
-
-  constructor(private chatService: WebSocketService) {
+  userName: UserProfileModel;
+  private userSub: Subscription;
+  constructor(private chatService: WebSocketService, private authService: AuthService, private userProfileService: UserProfileService) {
     this.chatService.newUserJoined().subscribe(data=>{
       this.messageArray.push(data);
     });
@@ -29,14 +33,31 @@ export class ChatComponent{
     });
   }
 
+
   join() {
-    this.chatService.joinRoom({ user: this.user, room: this.room });
+    this.chatService.joinRoom({ user: this.userName.firstName });
   }
   leave(){
-    this.chatService.leaveRoom({ user: this.user, room: this.room });
+    this.chatService.leaveRoom({ user: this.userName.firstName });
   }
   sendMessage(){
-    this.chatService.sendMessage({ user: this.user, room: this.room, message: this.messageText});
+    this.chatService.sendMessage({ user: this.userName.firstName, message: this.messageText});
   }
+
+  ngOnInit() {
+      this.userProfileService.getInfo(this.authService.getUserId());
+      this.userSub = this.userProfileService.getUserUpdate()
+        .subscribe((fromServer: any) => {
+          this.userName = fromServer;
+          this.join();
+        });
+
+    }
+
+
+    ngOnDestroy(){
+      this.userSub.unsubscribe();
+      this.leave();
+    }
 
 }

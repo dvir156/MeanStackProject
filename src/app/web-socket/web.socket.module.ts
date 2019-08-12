@@ -8,7 +8,7 @@ import {ChatComponent} from './socket-io/chat.component';
 
 @NgModule({
   declarations: [
-    ChatComponent
+    ChatComponent,
   ],
   imports: [
     CommonModule,

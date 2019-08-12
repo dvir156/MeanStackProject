@@ -1,8 +1,6 @@
 import { PipeTransform, Pipe } from '@angular/core';
 
-@Pipe({
-  name: 'lastNameFilter'
-})
+@Pipe({name: 'lastNameFilter'})
 export class LastnameFilter implements PipeTransform {
   transform(users: any[], searchTerm: string): any[] {
     if (!users || !searchTerm) {
