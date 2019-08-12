@@ -33,7 +33,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       data.value.Age,
       data.value.Country
     );
-    window.location.reload();
+    // window.location.reload();
   }
 
   ngOnInit() {

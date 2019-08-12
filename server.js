@@ -82,12 +82,10 @@ io.on('connection', (socket)=> {
 
   socket.on('join',(data)=>{
     socket.join(data.room);
-    // console.log(`${data.user} joined the room: ${data.room}`);
     socket.broadcast.to(data.room).emit('new user joined',{user : data.user , message: 'has joined the room'});
   });
   socket.on('leave',(data)=>{
     socket.leave(data.room);
-    // console.log(`${data.user} leave the room: ${data.room}`);
     socket.broadcast.to(data.room).emit('left room',{user : data.user, message: 'left the room'});
   });
   socket.on('message',data => {

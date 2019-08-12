@@ -3,11 +3,12 @@
   <img src="http://www.transparentpng.com/thumb/team-work/team-work-free-cut-out-10.png" alt="logo" style="width:42px;height:42px;border:0;">
   <span class="spacer"></span>
   <ul>
+    <div class = header-right>
     <li *ngIf="userIsAuthenticated">
       <div class="dropdown">
-        <button class="dropbtn" *ngIf="user; else tryThis"> {{ user.firstName }}
+        <a class="dropbtn" *ngIf="user; else tryThis"> {{ user.firstName }}
           <i class="fa fa-caret-down"></i>
-        </button>
+        </a>
         <ng-template class="dropbtn" #tryThis>User Name</ng-template>
         <div class="dropdown-content">
           <a routerLink="/userprofile">User Profile</a>
@@ -29,7 +30,8 @@
       <a mat-button routerLink="auth/signup" routerLinkActive="mat-accent">Signup</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <button mat-button (click)="onLogout()">Logout</button>
+      <a mat-button (click)="onLogout()">Logout</a>
     </li>
+    </div>
   </ul>
 </mat-toolbar>

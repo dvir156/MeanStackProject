@@ -16,13 +16,16 @@ import {StatisticsModule} from './statistics/statistics.module';
 import {FooterComponent} from './footer/footer.component';
 import {WeatherModule} from './weather/weather.module';
 import {WebSocketModule} from './web-socket/web.socket.module';
+import {CanvasComponent} from './canvas/canvas-data/canvas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ErrorComponent,
-    FooterComponent
+    FooterComponent,
+    CanvasComponent,
+
   ],
   imports: [
     BrowserModule,
