@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'map', component: MapComponent , canActivate: [AuthGuard]},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
+
 ];
 
 @NgModule({
