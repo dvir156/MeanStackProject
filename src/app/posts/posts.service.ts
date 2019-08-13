@@ -88,9 +88,9 @@ export class PostsService {
         title,
         content,
         imagePath: image,
-        creator: null,
         numOflikes: numOflikes,
-        userIdThatLiked: userIdThatLiked
+        userIdThatLiked: userIdThatLiked,
+        creator: null
       };
     }
     this.http

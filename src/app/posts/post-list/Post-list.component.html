@@ -16,11 +16,23 @@
           style="width:300px; border: 2px groove;
   border-radius: 4px;" [(ngModel)]="searchTermByContent" />
 </div>
-<mat-checkbox>include picture</mat-checkbox>
-
+<mat-checkbox checked="checked">include picture</mat-checkbox>
+<mat-accordion *ngIf="findRecPost">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <span style="color: red; ">Recommended Post</span>
+    </mat-expansion-panel-header>
+    {{recommendedPost.title}}
+    <mat-divider></mat-divider>
+    <div class="post-image">
+      <img [src]="recommendedPost.imagePath" [alt]="recommendedPost.title">
+    </div>
+    {{recommendedPost.content}}
+  </mat-expansion-panel>
+</mat-accordion>
 <mat-accordion>
   <mat-expansion-panel *ngFor="let post of posts | postNameFilter:searchTermByName|postContentFilter:searchTermByContent" >
-    <mat-expansion-panel-header>
+    <mat-expansion-panel-header (click)="onClickPost(post,userId)">
       {{ post.title}}
     </mat-expansion-panel-header>
     <div class="post-image">
@@ -28,27 +40,21 @@
     </div>
     <p>{{ post.content }}</p>
     <mat-divider></mat-divider>
-    <mat-menu  #appMenu="matMenu">
-      <mat-nav-list >
-          <a mat-list-item  *ngFor="let user of usersThatLiked"> {{ user }} </a>
-      </mat-nav-list>
-    </mat-menu>
-
-    <button mat-icon-button (click)="updateList(post)" [matMenuTriggerFor]="appMenu">
-      Likes : {{ post.numOflikes}}
-    </button>
-    <p></p>
-    <button mat-button *ngIf="UserLikedThisPost(post,userId) && likedPost == true" (click)="onLike(post,userId)">Like</button>
-    <button mat-button *ngIf="!UserLikedThisPost(post,userId) || likedPost == false" (click)="onDislike(post,userId)">Dislike</button>
-
-
-
+    <p>Likes : {{ post.numOflikes}}</p>
+    <div *ngIf="likedPost; else doesntLike">
+      <button mat-button (click)="onLike(post,userId);onClickPost(post,userId)">Like</button>
+    </div>
+    <ng-template #doesntLike>
+      <button mat-button (click)="onDislike(post,userId);onClickPost(post,userId)">Dislike</button>
+    </ng-template>
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
       <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
       <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+
+
 <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
                *ngIf="posts.length > 0"></mat-paginator>
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>
