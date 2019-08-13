@@ -45,7 +45,7 @@ export class ChatComponent implements OnInit , OnDestroy{
   }
 
   ngOnInit() {
-      this.userProfileService.getInfo(this.authService.getUserId());
+      this.userProfileService.socketIoUsers(this.authService.getUserId());
       this.userSub = this.userProfileService.getUserUpdate()
         .subscribe((fromServer: any) => {
           this.userName = fromServer;

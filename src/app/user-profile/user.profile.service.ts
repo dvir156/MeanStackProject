@@ -12,7 +12,7 @@ const BACKEND_URL = environment.apiUrl + "/userprofile/";
 export class UserProfileService {
   private userProfile = [];
   private userUpdate = new Subject<UserProfileModel>();
-
+  private socketUser: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -29,12 +29,12 @@ export class UserProfileService {
   }
 
 
-//   getInfo(userId: string) {
-//    this.http.get(BACKEND_URL + "userinfo/:id " + userId).subscribe(data => {
-//     this.userProfile = data;
-//     this.userUpdate.next(this.userProfile);
-//   });
-// }
+  socketIoUsers(userId: string) {
+   this.http.get(BACKEND_URL + "userinfo/:id " + userId).subscribe(data => {
+    this.socketUser = data;
+    this.userUpdate.next(this.socketUser);
+  });
+}
 
 
   getInfo(userId: string) {
