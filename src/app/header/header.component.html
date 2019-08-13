@@ -16,7 +16,7 @@
         </div>
       </div>
     </li>
-    <li *ngIf="userIsAuthenticated">
+    <li *ngIf="userIsAuthenticated && authService.getUserNameFromLogin()[1]">
       <a mat-button routerLink="/chat" routerLinkActive="mat-accent">Chat</a>
     </li>
     <li *ngIf="userIsAuthenticated">

@@ -35,22 +35,18 @@ export class ChatComponent implements OnInit , OnDestroy{
 
 
   join() {
-    this.chatService.joinRoom({ user: this.userName.firstName });
+    this.chatService.joinRoom({ user: this.authService.getUserNameFromLogin()[1] });
   }
   leave(){
-    this.chatService.leaveRoom({ user: this.userName.firstName });
+    this.chatService.leaveRoom({ user: this.authService.getUserNameFromLogin()[1] });
   }
   sendMessage(){
-    this.chatService.sendMessage({ user: this.userName.firstName, message: this.messageText});
+    this.chatService.sendMessage({ user: this.authService.getUserNameFromLogin()[1], message: this.messageText});
   }
 
   ngOnInit() {
-      this.userProfileService.socketIoUsers(this.authService.getUserId());
-      this.userSub = this.userProfileService.getUserUpdate()
-        .subscribe((fromServer: any) => {
-          this.userName = fromServer;
-          this.join();
-        });
+    this.authService.test();
+    this.join();
 
     }
 

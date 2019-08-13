@@ -3,10 +3,10 @@
     <h2>Realtime Chat Application</h2>
     <hr>
   </div>
-  <div class="row" *ngIf="userName">
+  <div class="row" *ngIf="this.authService.getUserNameFromLogin()[1]">
     <div class="col-sm-5">
       <div class="form-group">
-        <label>{{this.userName.firstName}}</label>
+        <label>{{this.authService.getUserNameFromLogin()[1]}}</label>
 <!--        <input type="text" [(ngModel)]="userName.firstName" class="form-control" id="username" placeholder="Enter username">-->
         <!-- <small id="userHelp" class="form-text text-muted">Type your username.</small> -->
       </div>
