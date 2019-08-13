@@ -1,8 +1,42 @@
 <p>map works!</p>
 
-<agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
-  <agm-marker
-    [latitude]="latitude"
-    [longitude]="longitude"
-    *ngIf="locationChosen"></agm-marker>
-</agm-map>
+<!--<agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">-->
+<!--  <agm-marker-->
+<!--    [latitude]="latitude"-->
+<!--    [longitude]="longitude"-->
+<!--    *ngIf="locationChosen"></agm-marker>-->
+<!--</agm-map>-->
+
+
+<!--<mat-form-field>-->
+<!--  <mat-label>Address << using the directive >></mat-label>-->
+<!--  <input matInput-->
+<!--         matGoogleMapsAutocomplete-->
+<!--         [country]="de"-->
+<!--         (onAutocompleteSelected)="onAutocompleteSelected($event)"-->
+<!--         (onLocationSelected)="onLocationSelected($event)">-->
+<!--</mat-form-field>-->
+
+<!--<mat-google-maps-autocomplete [appearance]="appearance.OUTLINE"-->
+<!--                              (onAutocompleteSelected)="onAutocompleteSelected($event)"-->
+<!--                              (onLocationSelected)="onLocationSelected($event)">-->
+<!--</mat-google-maps-autocomplete>-->
+
+<div class="container" fxLayout="column" fxLayoutAlign="center">
+  <div fxFlex fxFlexAlign="center"
+       class="autocomplete-container">
+    <mat-google-maps-autocomplete [appearance]="appearance.OUTLINE"
+                                  (onAutocompleteSelected)="onAutocompleteSelected($event)"
+                                  (onLocationSelected)="onLocationSelected($event)">
+    </mat-google-maps-autocomplete>
+  </div>
+  <div fxFlex>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+  </div>
+
+
+
+</div>
+

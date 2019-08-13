@@ -5,6 +5,7 @@ import {AngularMaterialModule} from '../angular-material.module';
 import {RouterModule} from '@angular/router';
 import {MapComponent} from './map-google/map.component';
 import {AgmCoreModule} from '@agm/core';
+import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
 
 
 @NgModule({
@@ -18,8 +19,9 @@ import {AgmCoreModule} from '@agm/core';
     RouterModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: "Google map JavaScript API key"
-     })
+      apiKey: 'Google map JavaScript API key'
+    }),
+    MatGoogleMapsAutocompleteModule
   ]
 })
 

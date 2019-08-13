@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.7",
+    "@angular-material-extensions/google-maps-autocomplete": "^2.0.0",
     "@angular/animations": "^8.1.3",
     "@angular/cdk": "^8.1.1",
     "@angular/common": "~8.1.2",
@@ -48,6 +49,7 @@
     "@angular/cli": "~8.1.2",
     "@angular/compiler-cli": "~8.1.2",
     "@angular/language-service": "~8.1.2",
+    "@types/googlemaps": "^3.37.3",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
