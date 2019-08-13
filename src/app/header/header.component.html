@@ -1,14 +1,13 @@
- <mat-toolbar color="primary">
+<mat-toolbar color="primary">
   <span><a routerLink="/">SocialNetwork</a></span>
   <img src="http://www.transparentpng.com/thumb/team-work/team-work-free-cut-out-10.png" alt="logo" style="width:42px;height:42px;border:0;">
   <span class="spacer"></span>
   <ul>
-    <div class = header-right>
     <li *ngIf="userIsAuthenticated">
       <div class="dropdown">
-        <a class="dropbtn" *ngIf="authService.getUserNameFromLogin()[1]; else tryThis"> {{ authService.getUserNameFromLogin()[1] }}
+        <button class="dropbtn" *ngIf="user; else tryThis"> {{ user.firstName }}
           <i class="fa fa-caret-down"></i>
-        </a>
+        </button>
         <ng-template class="dropbtn" #tryThis>User Name</ng-template>
         <div class="dropdown-content">
           <a routerLink="/userprofile">User Profile</a>
@@ -20,9 +19,6 @@
     <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
     </li>
-    <li>
-      <a mat-button routerLink="/chat" routerLinkActive="mat-accent">Chat</a>
-    </li>
     <li *ngIf="!userIsAuthenticated">
       <a mat-button routerLink="auth/login" routerLinkActive="mat-accent">Login</a>
     </li>
@@ -30,8 +26,7 @@
       <a mat-button routerLink="auth/signup" routerLinkActive="mat-accent">Signup</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <a mat-button (click)="onLogout()">Logout</a>
+      <button mat-button (click)="onLogout()">Logout</button>
     </li>
-    </div>
   </ul>
 </mat-toolbar>
