@@ -29,6 +29,11 @@ export class HeaderComponent implements OnInit , OnDestroy {
     //     this.user = fromServer;
     //   });
 
+
+    if(this.userIsAuthenticated){
+      this.authService.test();
+    }
+
   }
 
   onLogout() {

@@ -19,6 +19,9 @@ export class AuthService {
   private authStatusListener = new Subject<boolean>();
   private getUserName: any;
 
+
+  public userName: string;
+
   constructor(private http: HttpClient, private router: Router ,private userProfile: UserProfileService) {}
 
   getToken() {
@@ -82,6 +85,11 @@ export class AuthService {
       });
   }
 
+  test(){
+    this.userProfile.getInfo(this.getUserId());
+    this.getUserName = this.userProfile.getData();
+  }
+
   autoAuthUser() {
     const authInformation = this.getAuthData();
     if (!authInformation) {
@@ -93,6 +101,7 @@ export class AuthService {
       this.token = authInformation.token;
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
+      this.userName = authInformation.name;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     }
@@ -103,8 +112,10 @@ export class AuthService {
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.userId = null;
+    this.userName = null;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
+    this.userProfile.clearGetData();
     this.router.navigate(['/']);
   }
 
@@ -125,18 +136,21 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
     localStorage.removeItem('userId');
-    this.userProfile.clearGetData();
+    localStorage.removeItem('userName');
   }
 
   private getAuthData() {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expiration');
     const userId = localStorage.getItem('userId');
+    const name = localStorage.getItem('userName');
+
     if (!token || !expirationDate) {
       return;
     }
     return {
       token,
+      name,
       expirationDate: new Date(expirationDate),
       userId
     };

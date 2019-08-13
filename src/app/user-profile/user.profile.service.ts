@@ -44,6 +44,7 @@ export class UserProfileService {
           this.userProfile.push(data[key]);
         }
       }
+      localStorage.setItem('userName', this.userProfile[1]);
     });
   }
 
