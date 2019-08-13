@@ -45,11 +45,14 @@ export class UserProfileService {
         }
       }
     });
-
   }
 
   public getData(){
     return this.userProfile;
+  }
+
+  public clearGetData(){
+    this.userProfile = [];
   }
 
   getUserUpdate(){

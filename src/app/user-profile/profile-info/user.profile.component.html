@@ -1,19 +1,39 @@
+<!--<mat-card>-->
+<!--  <mat-spinner *ngIf="isLoading"></mat-spinner>-->
+<!--  <form (submit)="createData(data)" #data="ngForm" *ngIf="!isLoading" >-->
+<!--    <mat-form-field *ngIf="!user">-->
+<!--      <input matInput name="FirstName" ngModel type="text" placeholder="First Name">-->
+<!--    </mat-form-field>-->
+<!--    <mat-form-field *ngIf="!user">-->
+<!--      <input matInput name="LastName" ngModel type="text" placeholder="Last Name">-->
+<!--    </mat-form-field>-->
+<!--    <mat-form-field *ngIf="!user">-->
+<!--    <input matInput name="Age" ngModel type="number" placeholder="Age">-->
+<!--    </mat-form-field>-->
+<!--    <mat-form-field *ngIf="!user">-->
+<!--      <input  matInput name="Country" ngModel type="text" placeholder="Country">-->
+<!--    </mat-form-field>-->
+<!--    <button mat-raised-button color="accent" type="submit"  *ngIf="!user; else hide">Submit</button>-->
+<!--    <ng-template #hide> Profile Created </ng-template>-->
+<!--  </form>-->
+<!--</mat-card>-->
+
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="createData(data)" #data="ngForm" *ngIf="!isLoading" >
-    <mat-form-field *ngIf="!user">
+    <mat-form-field *ngIf="!authService.getUserNameFromLogin()[1]">
       <input matInput name="FirstName" ngModel type="text" placeholder="First Name">
     </mat-form-field>
-    <mat-form-field *ngIf="!user">
+    <mat-form-field *ngIf="!authService.getUserNameFromLogin()[1]">
       <input matInput name="LastName" ngModel type="text" placeholder="Last Name">
     </mat-form-field>
-    <mat-form-field *ngIf="!user">
-    <input matInput name="Age" ngModel type="number" placeholder="Age">
+    <mat-form-field *ngIf="!authService.getUserNameFromLogin()[1]">
+      <input matInput name="Age" ngModel type="number" placeholder="Age">
     </mat-form-field>
-    <mat-form-field *ngIf="!user">
+    <mat-form-field *ngIf="!authService.getUserNameFromLogin()[1]">
       <input  matInput name="Country" ngModel type="text" placeholder="Country">
     </mat-form-field>
-    <button mat-raised-button color="accent" type="submit"  *ngIf="!user; else hide">Submit</button>
+    <button mat-raised-button color="accent" type="submit"  *ngIf="!authService.getUserNameFromLogin()[1]; else hide">Submit</button>
     <ng-template #hide> Profile Created </ng-template>
   </form>
 </mat-card>

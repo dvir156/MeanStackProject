@@ -41,6 +41,7 @@ export class AuthService {
     return this.getUserName;
   }
 
+
   createUser(email: string, password: string) {
     const authData: AuthData = { email, password };
     this.http.post(BACKEND_URL + 'signup', authData).subscribe(() => {
@@ -124,6 +125,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
     localStorage.removeItem('userId');
+    this.userProfile.clearGetData();
   }
 
   private getAuthData() {
