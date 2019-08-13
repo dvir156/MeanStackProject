@@ -5,7 +5,7 @@
   <ul>
     <li *ngIf="userIsAuthenticated">
       <div class="dropdown">
-        <button class="dropbtn" *ngIf="user; else tryThis"> {{ user.firstName }}
+        <button class="dropbtn" *ngIf="authService.getUserNameFromLogin()[1]; else tryThis"> {{ authService.getUserNameFromLogin()[1] }}
           <i class="fa fa-caret-down"></i>
         </button>
         <ng-template class="dropbtn" #tryThis>User Name</ng-template>
@@ -15,6 +15,9 @@
           <a routerLink="/statistics">Users List</a>
         </div>
       </div>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/chat" routerLinkActive="mat-accent">Chat</a>
     </li>
     <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
