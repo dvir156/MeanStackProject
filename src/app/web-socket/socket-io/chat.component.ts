@@ -19,8 +19,7 @@ export class ChatComponent implements OnInit , OnDestroy{
   messageArray:Array<{user: String,message: String}>=[];
   messageText: string;
   userName: UserProfileModel;
-  private userSub: Subscription;
-  constructor(private chatService: WebSocketService, private authService: AuthService, private userProfileService: UserProfileService) {
+  constructor(private chatService: WebSocketService, private authService: AuthService) {
     this.chatService.newUserJoined().subscribe(data=>{
       this.messageArray.push(data);
     });
@@ -52,7 +51,6 @@ export class ChatComponent implements OnInit , OnDestroy{
 
 
     ngOnDestroy(){
-      this.userSub.unsubscribe();
       this.leave();
     }
 
