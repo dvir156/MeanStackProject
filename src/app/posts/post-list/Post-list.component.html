@@ -8,10 +8,17 @@
 <body>
 
 
-
+<div class="form-group">
+  <input  type="text" class="form-control" placeholder="Search Post"
+          style="width:300px; border: 2px groove;
+  border-radius: 4px;" [(ngModel)]="searchTermByName" />
+  <input  type="text" class="form-control" placeholder="By Post Content"
+          style="width:300px; border: 2px groove;
+  border-radius: 4px;" [(ngModel)]="searchTermByContent" />
+</div>
+<mat-checkbox>include picture</mat-checkbox>
 
 <mat-accordion>
-  <mat-checkbox><span style="font-size: small;">include picture</span></mat-checkbox>
   <mat-expansion-panel *ngFor="let post of posts | postNameFilter:searchTermByName|postContentFilter:searchTermByContent" >
     <mat-expansion-panel-header>
       {{ post.title}}
