@@ -17,6 +17,8 @@ import {FooterComponent} from './footer/footer.component';
 import {WeatherModule} from './weather/weather.module';
 import {WebSocketModule} from './web-socket/web.socket.module';
 import {CanvasComponent} from './canvas/canvas-data/canvas.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,11 @@ import {CanvasComponent} from './canvas/canvas-data/canvas.component';
     MapMdoule,
     StatisticsModule,
     WeatherModule,
-    WebSocketModule
+    WebSocketModule,
+    AgmCoreModule.forRoot({
+    apiKey: 'AIzaSyAAXZyutzornngMjFPiS7c8F5J0W8hxjX4'
+// apiKey: process.env.googlekey
+})
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
