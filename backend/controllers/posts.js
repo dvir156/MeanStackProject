@@ -40,12 +40,12 @@ exports.updatePost = (req, res, next) => {
     title: req.body.title,
     content: req.body.content,
     imagePath: imagePath,
-    creator: req.userData.userId,
+    creator: req.body.creator,
     numOflikes: req.body.numOflikes,
     userIdThatLiked: req.body.userIdThatLiked
   });
   Post.updateOne(
-    { _id: req.params.id, creator: req.userData.userId },
+    { _id: req.params.id },
     post
   ).then(result => {
     if (result.n > 0) {

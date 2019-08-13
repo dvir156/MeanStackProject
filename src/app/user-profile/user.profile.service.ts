@@ -21,7 +21,7 @@ export class UserProfileService {
       firstName,
       lastName,
       age,
-      country
+      country,
     };
     this.http.post(BACKEND_URL + "createdata", userData).subscribe(() => {
       this.router.navigate(['/']);

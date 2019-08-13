@@ -5,6 +5,7 @@ import {Post} from '../post.model';
 import {PostsService} from '../posts.service';
 import {AuthService} from '../../auth/auth.service';
 
+
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
@@ -32,8 +33,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription;
   searchTermByName: string;
   searchTermByContent: string;
-  usersThatLiked:Array<string> = [];
-  likedPost = true;
+  recommendedPost: Post;
+  likedPost: boolean;
+  findRecPost: boolean = false;
   ngOnInit() {
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
@@ -52,7 +54,6 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
       });
-
   }
 
   onChangedPage(pageData: PageEvent) {
@@ -81,38 +82,58 @@ export class PostListComponent implements OnInit, OnDestroy {
     let num = parseInt(post.numOflikes, 10);
     num += 1;
     post.numOflikes = String(num);
-    //add the user id to users
-    //TODO
-    this.likedPost = false;
-    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes,userId);
-
+    if(post.userIdThatLiked =='null')
+    {
+      post.userIdThatLiked = userId;
+    }
+    else{
+      post.userIdThatLiked +=userId;
+    }
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, post.userIdThatLiked);
   }
 
   onDislike(post: Post,userId: string) {
     let num = parseInt(post.numOflikes, 10);
     num -= 1;
     post.numOflikes = String(num);
-    //TODO
-    //delete this user from the list
-    if(post.userIdThatLiked.includes(userId))
-    {
-      post.userIdThatLiked=post.userIdThatLiked.replace(userId, '');
-    }
-    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, post.userIdThatLiked);
-    location.reload();
-
+    let str = post.userIdThatLiked.replace(userId,'');
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, str);
+    this.postsService.getPosts(this.postsPerPage, this.currentPage);
   }
 
-  UserLikedThisPost(post: Post, userId: string) {
-    return !post.userIdThatLiked.includes(userId);
+  updateLikeButton(post: Post,userId: string)
+  {
+      return post.userIdThatLiked.includes(userId);
   }
 
-  updateList(post: Post) {
-    this.usersThatLiked = [];
-    this.usersThatLiked.push(post.userIdThatLiked);
-    if(this.usersThatLiked.includes('null'))
+  statisticRecommended(userId: string)
+  {
+    let userPostLiked;
+    let count = 0;
+    for (let i = 0;i<this.posts.length;i++)
     {
-      this.usersThatLiked.pop();
+      count +=1;
+      if(this.posts[i].userIdThatLiked.includes(userId))
+      {
+        userPostLiked = this.posts[i].creator;
+        break;
+      }
     }
+    for (let i = 0;i<this.posts.length;i++)
+    {
+      if(count!= i && this.posts[i].creator == userPostLiked && !(this.posts[i].userIdThatLiked.includes(userId)))
+      {
+        this.findRecPost = true;
+        this.recommendedPost = this.posts[i];
+        return;
+      }
+    }
+    this.findRecPost = false;
+  }
+
+
+  onClickPost(post: Post, userId: string) {
+      this.likedPost = !this.updateLikeButton(post,userId);
+      this.statisticRecommended(userId);
   }
 }
