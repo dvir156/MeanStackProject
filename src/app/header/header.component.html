@@ -6,10 +6,9 @@
     <div class = header-right>
     <li *ngIf="userIsAuthenticated">
       <div class="dropdown">
-        <a class="dropbtn" *ngIf="user; else tryThis"> {{ user.firstName }}
+        <a class="dropbtn" *ngIf="authService.getUserNameFromLogin()[1]"> {{ authService.getUserNameFromLogin()[1] }}
           <i class="fa fa-caret-down"></i>
         </a>
-        <ng-template class="dropbtn" #tryThis>User Name</ng-template>
         <div class="dropdown-content">
           <a routerLink="/userprofile">User Profile</a>
           <a routerLink="/map">Map</a>

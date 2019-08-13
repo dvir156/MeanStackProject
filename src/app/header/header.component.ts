@@ -7,16 +7,15 @@ import {UserProfileService} from '../user-profile/user.profile.service';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.css']
+    styleUrls: ['./header.component.css'],
 })
 
 export class HeaderComponent implements OnInit , OnDestroy {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-  private user: UserProfileModel;
   private userSub: Subscription;
 
-  constructor(private authService: AuthService,public userProfileService: UserProfileService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -25,16 +24,14 @@ export class HeaderComponent implements OnInit , OnDestroy {
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
       });
-    this.userProfileService.getInfo(this.authService.getUserId());
-    this.userSub = this.userProfileService.getUserUpdate()
-      .subscribe((fromServer: any) => {
-        this.user = fromServer;
-      });
+    // this.userSub = this.userProfileService.getUserUpdate()
+    //   .subscribe((fromServer: any) => {
+    //     this.user = fromServer;
+    //   });
 
   }
 
   onLogout() {
-    this.user = null;
     this.authService.logout();
   }
 

@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { AuthData } from './auth.data.model';
 
 import { environment } from '../../environments/environment';
+import {UserProfileService} from '../user-profile/user.profile.service';
 
 const BACKEND_URL = environment.apiUrl + '/user/';
 
@@ -16,8 +17,9 @@ export class AuthService {
   private tokenTimer: any;
   private userId: string;
   private authStatusListener = new Subject<boolean>();
+  private getUserName: any;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router ,private userProfile: UserProfileService) {}
 
   getToken() {
     return this.token;
@@ -33,6 +35,10 @@ export class AuthService {
 
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
+  }
+
+  getUserNameFromLogin(){
+    return this.getUserName;
   }
 
   createUser(email: string, password: string) {
@@ -64,6 +70,10 @@ export class AuthService {
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate, this.userId);
+
+          this.userProfile.getInfo(this.getUserId());
+          this.getUserName = this.userProfile.getData();
+
           this.router.navigate(['/']);
         }
       }, error => {
