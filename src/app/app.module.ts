@@ -14,11 +14,11 @@ import {UserProfileModule} from './user-profile/user.profile.module';
 import {MapMdoule} from './map/map.mdoule';
 import {StatisticsModule} from './statistics/statistics.module';
 import {FooterComponent} from './footer/footer.component';
-import {WeatherModule} from './weather/weather.module';
 import {WebSocketModule} from './web-socket/web.socket.module';
 import {CanvasComponent} from './canvas/canvas-data/canvas.component';
 import { AgmCoreModule } from '@agm/core';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+import {BottomComponent} from './bottom/bottom.component';
 
 
 @NgModule({
@@ -28,6 +28,7 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
     ErrorComponent,
     FooterComponent,
     CanvasComponent,
+    BottomComponent,
 
   ],
   imports: [
@@ -40,13 +41,14 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
     UserProfileModule,
     MapMdoule,
     StatisticsModule,
-    WeatherModule,
     WebSocketModule,
     AgmCoreModule.forRoot({
     apiKey: 'AIzaSyAAXZyutzornngMjFPiS7c8F5J0W8hxjX4',
       libraries: ['places']
     }),
-    MatGoogleMapsAutocompleteModule.forRoot()
+    MatGoogleMapsAutocompleteModule.forRoot(),
+    MatGoogleMapsAutocompleteModule,
+    AgmCoreModule.forRoot()
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

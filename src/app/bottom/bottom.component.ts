@@ -4,12 +4,12 @@ import {Subscription} from 'rxjs';
 
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.css'],
+  selector: 'app-bottom',
+  templateUrl: './bottom.component.html',
+  styleUrls: ['./bottom.component.css'],
 })
 
-export class HeaderComponent implements OnInit , OnDestroy {
+export class BottomComponent implements OnInit , OnDestroy {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
   private userSub: Subscription;
@@ -43,4 +43,3 @@ export class HeaderComponent implements OnInit , OnDestroy {
   }
 
 }
-

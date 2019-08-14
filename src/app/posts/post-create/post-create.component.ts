@@ -91,7 +91,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
         this.form.value.image
       );
     } else {
-      this.postsService.updatePost(this.postId, this.form.value.title, this.form.value.content, this.form.value.image, this.post.numOflikes, this.post.userIdThatLiked);
+      this.postsService.updatePost(this.postId, this.form.value.title, this.form.value.content, this.form.value.image, this.post.numOflikes, this.post.userIdThatLiked,this.post.creator);
     }
     this.form.reset();
 
