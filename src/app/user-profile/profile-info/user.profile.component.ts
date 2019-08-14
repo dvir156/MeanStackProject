@@ -25,7 +25,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   public appearance = Appearance;
   public latitude: number;
   public longitude: number;
-  private countryName: string;
+  countryName = '';
   result: PlaceResult;
 
   constructor(public userProfileService: UserProfileService, private authService: AuthService) {
@@ -36,12 +36,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     if (data.invalid) {
       return;
     }
-    this.userProfileService.createProfileData(
-      data.value.FirstName,
+    this.userProfileService.createProfileData(data.value.FirstName,
       data.value.LastName,
       data.value.Age,
       this.country,
-      this.result.address_components[4].long_name
+      this.result.name
     );
     // window.location.reload();
   }
@@ -61,6 +60,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   onAutocompleteSelected(result: PlaceResult) {
     this.result=result;
+    console.log(this.result.name)
   }
 
   onLocationSelected(location: Location) {
