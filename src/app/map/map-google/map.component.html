@@ -23,13 +23,13 @@
 <!--</mat-google-maps-autocomplete>-->
 
 <div class="container" fxLayout="column" fxLayoutAlign="center">
-  <div fxFlex fxFlexAlign="center"
-       class="autocomplete-container">
-    <mat-google-maps-autocomplete [appearance]="appearance.OUTLINE"
-                                  (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                                  (onLocationSelected)="onLocationSelected($event)">
-    </mat-google-maps-autocomplete>
-  </div>
+<!--  <div fxFlex fxFlexAlign="center"-->
+<!--       class="autocomplete-container">-->
+<!--    <mat-google-maps-autocomplete [country]="userCountry.getUserNameFromLogin()[4]" [appearance]="appearance.OUTLINE"-->
+<!--                                  (onAutocompleteSelected)="onAutocompleteSelected($event)"-->
+<!--                                  (onLocationSelected)="onLocationSelected($event)">-->
+<!--    </mat-google-maps-autocomplete>-->
+<!--  </div>-->
   <div fxFlex>
     <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
       <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>

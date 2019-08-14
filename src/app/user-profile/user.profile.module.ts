@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularMaterialModule} from '../angular-material.module';
 import {RouterModule} from '@angular/router';
 import {UserProfileComponent} from './profile-info/user.profile.component';
+import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {UserProfileComponent} from './profile-info/user.profile.component';
     AngularMaterialModule,
     RouterModule,
     FormsModule,
+    MatGoogleMapsAutocompleteModule,
   ]
 })
 
