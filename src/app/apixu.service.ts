@@ -9,8 +9,7 @@ export class ApixuService {
 
   getWeather(location) {
     return this.http.get(
-      "http://api.apixu.com/v1/current.json?key=57f85146a1304a97be8221908191308&q=" +
-        location
+      "https://cors-anywhere.herokuapp.com/http://api.apixu.com/v1/current.json?key=57f85146a1304a97be8221908191308&q="+location
     );
   }
 }

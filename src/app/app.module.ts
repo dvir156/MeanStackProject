@@ -13,7 +13,6 @@ import {PostsModule} from './posts/posts.module';
 import {UserProfileModule} from './user-profile/user.profile.module';
 import {MapMdoule} from './map/map.mdoule';
 import {StatisticsModule} from './statistics/statistics.module';
-import {FooterComponent} from './footer/footer.component';
 import {WebSocketModule} from './web-socket/web.socket.module';
 import {CanvasComponent} from './canvas/canvas-data/canvas.component';
 import { AgmCoreModule } from '@agm/core';
@@ -29,7 +28,6 @@ import {ApixuService} from './apixu.service';
     AppComponent,
     HeaderComponent,
     ErrorComponent,
-    FooterComponent,
     CanvasComponent,
     BottomComponent,
     WeatherComponent
@@ -51,8 +49,6 @@ import {ApixuService} from './apixu.service';
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule.forRoot(),
-    MatGoogleMapsAutocompleteModule,
-    AgmCoreModule.forRoot(),
     ReactiveFormsModule
   ],
   providers: [[ApixuService],{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
