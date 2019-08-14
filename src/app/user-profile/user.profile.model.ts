@@ -3,5 +3,5 @@ export interface UserProfileModel {
   lastName: string;
   age: number;
   country: string;
-
+  countryName: string;
 }

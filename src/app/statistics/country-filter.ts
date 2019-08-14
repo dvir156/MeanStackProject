@@ -9,6 +9,6 @@ export class CountryFilter implements PipeTransform {
       return users;
     }
     return users.filter(user =>
-      user.country.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+      user.countryName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
   }
 }

@@ -26,7 +26,7 @@ export class StatisticsService {
               firstName: moreData.firstName,
               lastName: moreData.lastName,
               age: moreData.age,
-              country: moreData.country,
+              countryName: moreData.countryName
             };
           })
         };
@@ -36,13 +36,6 @@ export class StatisticsService {
        this.userSatisiticsUpdate.next({userProfile: [...this.userProfile]});
     });
   }
-
-   // getAllUsers() {
-   //   this.http.get(BACKEND_URL + "alldata").subscribe(data =>{
-   //     this.userProfile = data;
-   //     this.userSatisiticsUpdate.next(this.userProfile);
-   //   });
-   // }
 
   staticsticGet() {
     return this.userSatisiticsUpdate.asObservable();

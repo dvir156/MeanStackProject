@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
 import {UserProfileModel} from '../../user-profile/user.profile.model';
 import {Subscription} from 'rxjs';
 import {AuthService} from '../../auth/auth.service';
 import {StatisticsService} from '../statistics.service';
-import {Location} from '@angular-material-extensions/google-maps-autocomplete';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   searchTermByName: string;
   searchTermByLastName: string;
   searchTermByCountry: string;
-  location:Location;
+
 
   constructor(private authService: AuthService, private statisticsService: StatisticsService) {}
 
@@ -31,12 +31,6 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
 
   }
-
-
-
-
-
-
 
   ngOnDestroy() {
     this.userSub.unsubscribe();
