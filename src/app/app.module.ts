@@ -32,7 +32,6 @@ import {ApixuService} from './apixu.service';
     CanvasComponent,
     BottomComponent,
     WeatherComponent,
-    Chart1Component
 
   ],
   imports: [

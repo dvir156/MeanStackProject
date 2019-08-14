@@ -36,7 +36,7 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="country">
     <th mat-header-cell *matHeaderCellDef> Country </th>
-    <td mat-cell *matCellDef="let dataSource"> {{dataSource.country}} </td>
+    <td mat-cell *matCellDef="let dataSource"> {{dataSource.countryName}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -46,6 +46,6 @@
 <mat-card>
 GroupBy Countries:
 <ul>
-  <li *ngFor="let object of dataSource | groupBy:'country'">{{ object.key }}</li>
+  <li *ngFor="let object of dataSource | groupBy:'countryName'">{{ object.key }}</li>
 </ul>
 </mat-card>

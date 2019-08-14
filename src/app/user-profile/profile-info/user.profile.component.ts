@@ -25,6 +25,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   public appearance = Appearance;
   public latitude: number;
   public longitude: number;
+  private countryName: string;
+  result: PlaceResult;
 
   constructor(public userProfileService: UserProfileService, private authService: AuthService) {
     this.country = '';
@@ -38,8 +40,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       data.value.FirstName,
       data.value.LastName,
       data.value.Age,
-      //  data.value.Country
-      this.country
+      this.country,
+      this.result.address_components[4].long_name
     );
     // window.location.reload();
   }
@@ -57,18 +59,22 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.userSub.unsubscribe();
   }
 
-  // onAutocompleteSelected(result: PlaceResult) {
-  //   // this.country = result.address_components;
-  //   console.log(this.country = result.address_components[3].long_name);
-  // }
+  onAutocompleteSelected(result: PlaceResult) {
+    this.result=result;
+  }
 
   onLocationSelected(location: Location) {
     console.log('onLocationSelected: ', location);
+    this.countryName = location[1];
     this.latitude = location.latitude;
     this.longitude = location.longitude;
     this.country += location.latitude.toString();
-    this.country +='='
+    this.country +='=';
     this.country += location.longitude.toString();
     console.log('country ', this.country);
+  }
+
+  getCountry(placeResult: PlaceResult){
+
   }
 }

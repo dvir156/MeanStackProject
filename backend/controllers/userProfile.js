@@ -3,11 +3,11 @@ const UserProfile = require("../models/userProfileModel");
 
 exports.newInfo = (req, res, next) => {
   const data = new UserProfile({
-
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     age: req.body.age,
     country: req.body.country,
+    countryName: req.body.countryName,
     creator: req.userData.userId
 
   });

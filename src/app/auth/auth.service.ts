@@ -55,6 +55,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
+    this.test();
     const authData: AuthData = { email, password };
     this.http
       .post<{ token: string; expiresIn: number, userId: string }>(
