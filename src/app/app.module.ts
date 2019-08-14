@@ -14,7 +14,6 @@ import {UserProfileModule} from './user-profile/user.profile.module';
 import {MapMdoule} from './map/map.mdoule';
 import {StatisticsModule} from './statistics/statistics.module';
 import {FooterComponent} from './footer/footer.component';
-import {WeatherModule} from './weather/weather.module';
 import {WebSocketModule} from './web-socket/web.socket.module';
 import {CanvasComponent} from './canvas/canvas-data/canvas.component';
 import { AgmCoreModule } from '@agm/core';
@@ -29,7 +28,7 @@ import {BottomComponent} from './bottom/bottom.component';
     ErrorComponent,
     FooterComponent,
     CanvasComponent,
-    BottomComponent
+    BottomComponent,
 
   ],
   imports: [
@@ -42,7 +41,6 @@ import {BottomComponent} from './bottom/bottom.component';
     UserProfileModule,
     MapMdoule,
     StatisticsModule,
-    WeatherModule,
     WebSocketModule,
     AgmCoreModule.forRoot({
     apiKey: 'AIzaSyAAXZyutzornngMjFPiS7c8F5J0W8hxjX4',
