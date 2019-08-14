@@ -36,6 +36,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   recommendedPost: Post;
   likedPost: boolean;
   findRecPost: boolean = false;
+  searchTermByimage: boolean = false;
   ngOnInit() {
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);

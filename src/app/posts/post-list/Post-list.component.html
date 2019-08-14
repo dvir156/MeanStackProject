@@ -16,7 +16,7 @@
           style="width:300px; border: 2px groove;
   border-radius: 4px;" [(ngModel)]="searchTermByContent" />
 </div>
-<mat-checkbox checked="checked">include picture</mat-checkbox>
+<mat-checkbox (click)="searchTermByimage = !searchTermByimage" checked="checked">include picture</mat-checkbox>
 <mat-accordion *ngIf="findRecPost">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -31,7 +31,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let post of posts | postNameFilter:searchTermByName|postContentFilter:searchTermByContent" >
+  <mat-expansion-panel *ngFor="let post of posts | postNameFilter:searchTermByName|postContentFilter:searchTermByContent| postImageFilter:searchTermByimage" >
     <mat-expansion-panel-header (click)="onClickPost(post,userId)">
       {{ post.title}}
     </mat-expansion-panel-header>

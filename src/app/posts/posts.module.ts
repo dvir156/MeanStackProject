@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {PostNameFilterPipe} from './posts-filter.pipe';
 import {PostContentFilterPipe} from './Post-Content-Filter-Pipe';
+import {PostImageFilter} from './post-image-filter';
 
 
 @NgModule({
@@ -15,13 +16,15 @@ import {PostContentFilterPipe} from './Post-Content-Filter-Pipe';
     PostListComponent,
     PostNameFilterPipe,
     PostContentFilterPipe,
+    PostImageFilter
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+
   ]
 })
 
