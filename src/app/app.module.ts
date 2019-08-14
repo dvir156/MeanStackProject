@@ -19,6 +19,7 @@ import {CanvasComponent} from './canvas/canvas-data/canvas.component';
 import { AgmCoreModule } from '@agm/core';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import {BottomComponent} from './bottom/bottom.component';
+import { Chart1Component } from './charts/chart1/chart1.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {BottomComponent} from './bottom/bottom.component';
     FooterComponent,
     CanvasComponent,
     BottomComponent,
+    Chart1Component,
 
   ],
   imports: [

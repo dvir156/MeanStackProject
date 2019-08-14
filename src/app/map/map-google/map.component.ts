@@ -28,17 +28,19 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.userCountry.test();
     console.log(this.userCountry.getUserNameFromLogin()[4]);
-   // this.country = this.userCountry.getUserNameFromLogin()[4].split('=');
-    // console.log(this.userCountry.getUserNameFromLogin()[4]);
-    this.titleService.setTitle('Home | @angular-material-extensions/google-maps-autocomplete');
+    if(this.userCountry.getUserNameFromLogin()[4]!= undefined) {
+      this.country = this.userCountry.getUserNameFromLogin()[4].split('=');
+      // console.log(this.userCountry.getUserNameFromLogin()[4]);
+      this.titleService.setTitle('Home | @angular-material-extensions/google-maps-autocomplete');
 
-    this.zoom = 10;
-   // this.latitude = +(this.country[0]);
-   // this.longitude = +(this.country[1]);
-    this.latitude = 1;
-    this.longitude = 1;
-   // this.setCurrentPosition();
-
+      this.zoom = 10;
+      this.latitude = +(this.country[0]);
+      // @ts-ignore
+      this.longitude = +(this.country[1]);
+    } else {
+      this.latitude = 31.971233;
+      this.longitude = 34.77157;
+    }
   }
 
   // private setCurrentPosition() {
