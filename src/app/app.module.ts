@@ -13,13 +13,15 @@ import {PostsModule} from './posts/posts.module';
 import {UserProfileModule} from './user-profile/user.profile.module';
 import {MapMdoule} from './map/map.mdoule';
 import {StatisticsModule} from './statistics/statistics.module';
-import {FooterComponent} from './footer/footer.component';
 import {WebSocketModule} from './web-socket/web.socket.module';
 import {CanvasComponent} from './canvas/canvas-data/canvas.component';
 import { AgmCoreModule } from '@agm/core';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import {BottomComponent} from './bottom/bottom.component';
 import { Chart1Component } from './charts/chart1/chart1.component';
+import {WeatherComponent} from './weather/weather.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ApixuService} from './apixu.service';
 
 
 @NgModule({
@@ -27,10 +29,9 @@ import { Chart1Component } from './charts/chart1/chart1.component';
     AppComponent,
     HeaderComponent,
     ErrorComponent,
-    FooterComponent,
     CanvasComponent,
     BottomComponent,
-    Chart1Component,
+    WeatherComponent
 
   ],
   imports: [
@@ -45,12 +46,13 @@ import { Chart1Component } from './charts/chart1/chart1.component';
     StatisticsModule,
     WebSocketModule,
     AgmCoreModule.forRoot({
-    apiKey: 'AIzaSyAAXZyutzornngMjFPiS7c8F5J0W8hxjX4',
+      apiKey: 'AIzaSyAAXZyutzornngMjFPiS7c8F5J0W8hxjX4',
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule.forRoot(),
+    ReactiveFormsModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  providers: [[ApixuService],{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]
