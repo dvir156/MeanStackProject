@@ -72,7 +72,7 @@ export class PostsService {
       });
   }
 
-  updatePost(id: string, title: string, content: string, image: File | string, numOflikes: string, userIdThatLiked: string) {
+  updatePost(id: string, title: string, content: string, image: File | string, numOflikes: string, userIdThatLiked: string,creator:string) {
     let postData: Post | FormData;
     if (typeof image === 'object') {
       postData = new FormData();
@@ -90,7 +90,7 @@ export class PostsService {
         imagePath: image,
         numOflikes: numOflikes,
         userIdThatLiked: userIdThatLiked,
-        creator: null
+        creator: creator
       };
     }
     this.http

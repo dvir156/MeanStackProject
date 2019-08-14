@@ -89,7 +89,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     else{
       post.userIdThatLiked +=userId;
     }
-    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, post.userIdThatLiked);
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, post.userIdThatLiked,post.creator);
   }
 
   onDislike(post: Post,userId: string) {
@@ -97,7 +97,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     num -= 1;
     post.numOflikes = String(num);
     let str = post.userIdThatLiked.replace(userId,'');
-    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, str);
+    this.postsService.updatePost(post.id, post.title, post.content, post.imagePath, post.numOflikes, str,post.creator);
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
   }
 

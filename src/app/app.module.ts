@@ -46,7 +46,9 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
     apiKey: 'AIzaSyAAXZyutzornngMjFPiS7c8F5J0W8hxjX4',
       libraries: ['places']
     }),
-    MatGoogleMapsAutocompleteModule.forRoot()
+    MatGoogleMapsAutocompleteModule.forRoot(),
+    MatGoogleMapsAutocompleteModule,
+    AgmCoreModule.forRoot()
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

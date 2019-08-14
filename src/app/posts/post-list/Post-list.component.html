@@ -41,6 +41,7 @@
     <p>{{ post.content }}</p>
     <mat-divider></mat-divider>
     <p>Likes : {{ post.numOflikes}}</p>
+    {{post.creator}}
     <div *ngIf="likedPost; else doesntLike">
       <button mat-button (click)="onLike(post,userId);onClickPost(post,userId)">Like</button>
     </div>
