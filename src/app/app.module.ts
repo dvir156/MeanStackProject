@@ -24,6 +24,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ApixuService} from './apixu.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import {ApixuService} from './apixu.service';
     ErrorComponent,
     CanvasComponent,
     BottomComponent,
-    WeatherComponent
+    WeatherComponent,
+    Chart1Component
 
   ],
   imports: [
