@@ -9,6 +9,6 @@ export class PostImageFilter implements PipeTransform {
     if (!posts || !Image) {
       return posts;
     }
-    return null
+    return null;
   }
 }

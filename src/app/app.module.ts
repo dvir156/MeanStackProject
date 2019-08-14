@@ -47,8 +47,6 @@ import {BottomComponent} from './bottom/bottom.component';
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule.forRoot(),
-    MatGoogleMapsAutocompleteModule,
-    AgmCoreModule.forRoot()
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
