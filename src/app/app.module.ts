@@ -19,6 +19,7 @@ import {WebSocketModule} from './web-socket/web.socket.module';
 import {CanvasComponent} from './canvas/canvas-data/canvas.component';
 import { AgmCoreModule } from '@agm/core';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+import {BottomComponent} from './bottom/bottom.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
     ErrorComponent,
     FooterComponent,
     CanvasComponent,
+    BottomComponent
 
   ],
   imports: [
