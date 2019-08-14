@@ -11,15 +11,10 @@
     <mat-form-field *ngIf="!authService.getUserNameFromLogin()[1]">
       <input matInput name="Age" ngModel type="number" placeholder="Age">
     </mat-form-field>
-<!--    <mat-form-field [appearance]="appearance.OUTLINE">-->
-<!--      <input name="Country" placeholder="Country" matInput-->
-<!--             matGoogleMapsAutocomplete-->
-<!--             (onAutocompleteSelected)="onAutocompleteSelected($event)">-->
-<!--    </mat-form-field>-->
-    <mat-google-maps-autocomplete [appearance]="appearance.OUTLINE"
+    <mat-google-maps-autocomplete *ngIf="!authService.getUserNameFromLogin()[1]" [appearance]="appearance.OUTLINE"
                                   (onLocationSelected)="onLocationSelected($event)">
-      <input matInput name="Country" type="text">
-    </mat-google-maps-autocomplete>
+      <input matInput  name="Country" type="text" >
+    </mat-google-maps-autocomplete >
     <button mat-raised-button color="accent" type="submit"  *ngIf="!authService.getUserNameFromLogin()[4]; else hide">Submit</button>
     <ng-template #hide> Profile Created </ng-template>
   </form>

@@ -6,11 +6,13 @@ import {RouterModule} from '@angular/router';
 import {MapComponent} from './map-google/map.component';
 import {AgmCoreModule} from '@agm/core';
 import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
+import {WeatherComponent} from '../weather/weather.component';
 
 
 @NgModule({
   declarations: [
-    MapComponent
+    MapComponent,
+    WeatherComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/goog
     AgmCoreModule.forRoot({
       apiKey: 'Google map JavaScript API key'
     }),
-    MatGoogleMapsAutocompleteModule
+    MatGoogleMapsAutocompleteModule,
+
   ]
 })
 

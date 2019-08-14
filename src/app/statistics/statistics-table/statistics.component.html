@@ -1,3 +1,4 @@
+
 <div class="form-group">
   <input  type="text" class="form-control" placeholder="Search Name"
           style="width:300px; border: 2px groove;
@@ -44,8 +45,8 @@
 </table>
 <mat-divider></mat-divider>
 <mat-card>
-GroupBy Countries:
+GroupBy Ages:
 <ul>
-  <li *ngFor="let object of dataSource | groupBy:'country'">{{ object.key }}</li>
+  <li *ngFor="let object of dataSource | groupBy:'age'">{{ object.key }}</li>
 </ul>
 </mat-card>

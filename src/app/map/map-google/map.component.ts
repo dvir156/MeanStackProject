@@ -5,6 +5,7 @@ import PlaceResult = google.maps.places.PlaceResult;
 import {google} from '@agm/core/services/google-maps-types';
 import {AuthService} from '../../auth/auth.service';
 import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 
 
@@ -25,13 +26,17 @@ export class MapComponent implements OnInit {
   private authListenerSubs: Subscription;
 
 
-  constructor(private titleService: Title, private userCountry: AuthService) {
+  constructor(private titleService: Title, private userCountry: AuthService,private router:Router) {
   }
 
 
   ngOnInit() {
-
+    this.userCountry.test();
     console.log(this.userCountry.getUserNameFromLogin()[4]);
+    if(this.userCountry.getUserNameFromLogin()[4]=== undefined)
+    {
+      this.router.navigate(["/"]);
+    }
     if(this.userCountry.getUserNameFromLogin()[4]!= undefined) {
       this.country = this.userCountry.getUserNameFromLogin()[4].split('=');
 
