@@ -1,0 +1,34 @@
+<!--<mat-spinner *ngIf="isLoading"></mat-spinner>-->
+<!--<mat-accordion multi="true" *ngIf="stories.length > 0 && !isLoading">-->
+<!--  <div  *ngFor="let image of stories" >-->
+<!--    <img class="post-image" [src]="image.imagePath" [alt]="image.title"/>-->
+<!--  </div>-->
+<!--</mat-accordion>-->
+<!--<p class="info-text mat-body-1" *ngIf="stories.length <= 0 && !isLoading">No Stories!</p>-->
+
+<div id="container" *ngIf="stories.length > 0">
+  <div
+    ng2-carouselamos
+    class="slides-wrapper"
+    [items]="stories"
+    [width]="450"
+    [$prev]="prev"
+    [$next]="next"
+    [$item]="item"
+  >
+  </div>
+
+
+  <ng-template #prev>
+    <img class="LeftButton" src="https://cdn.onlinewebfonts.com/svg/img_83017.png" id="left" />
+  </ng-template>
+  <ng-template #next>
+    <img class="rightButton" src="https://cdn.onlinewebfonts.com/svg/img_89635.png" id="right" />
+  </ng-template>
+  <ng-template #item let-item let-i="index">
+
+    <div class="slide-items">
+      <img src="{{ item.imagePath }}">
+    </div>
+
+  </ng-template></div>
