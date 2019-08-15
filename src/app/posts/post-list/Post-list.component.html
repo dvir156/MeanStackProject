@@ -1,4 +1,3 @@
-
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:500" >
@@ -17,6 +16,11 @@
   border-radius: 4px;" [(ngModel)]="searchTermByContent" />
 </div>
 <mat-checkbox (click)="searchTermByimage = !searchTermByimage" checked="checked">include picture</mat-checkbox>
+<div>
+<button (click)="uploadStory=!uploadStory" class="Story-button">Add Story</button>
+<app-story-create *ngIf="uploadStory"></app-story-create>
+<app-story-list></app-story-list>
+</div>
 <mat-accordion *ngIf="findRecPost">
   <mat-expansion-panel>
     <mat-expansion-panel-header>

@@ -20,6 +20,7 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
 import {BottomComponent} from './bottom/bottom.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ApixuService} from './apixu.service';
+import {Ng2CarouselamosModule} from 'ng2-carouselamos';
 
 
 
@@ -30,8 +31,6 @@ import {ApixuService} from './apixu.service';
     ErrorComponent,
     CanvasComponent,
     BottomComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -44,6 +43,7 @@ import {ApixuService} from './apixu.service';
     MapMdoule,
     StatisticsModule,
     WebSocketModule,
+    Ng2CarouselamosModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAAXZyutzornngMjFPiS7c8F5J0W8hxjX4',
       libraries: ['places']
@@ -52,9 +52,12 @@ import {ApixuService} from './apixu.service';
     ReactiveFormsModule,
 
   ],
-  providers: [[ApixuService],{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  providers: [[ApixuService], {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent],
+  exports: [
+
+  ],
   entryComponents: [ErrorComponent]
 })
 export class AppModule { }

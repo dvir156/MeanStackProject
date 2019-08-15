@@ -10,7 +10,7 @@ const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-
+const storiesRoutes = require('./routes/stories');
 const app = express();
 
 app.use(bodyParser.json());
@@ -61,7 +61,7 @@ app.use(cookieParser());
 
 app.use("/images", express.static(path.join("backend/images")));
 
-
+app.use("/api/stories", storiesRoutes);
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/userprofile", profileRoutes);

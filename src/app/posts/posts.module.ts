@@ -8,6 +8,10 @@ import { RouterModule } from '@angular/router';
 import {PostNameFilterPipe} from './posts-filter.pipe';
 import {PostContentFilterPipe} from './Post-Content-Filter-Pipe';
 import {PostImageFilter} from './post-image-filter';
+import {StoryCreateComponent} from '../stories/story-create/story-create.component';
+import {StoryListComponent} from '../stories/story-list/story-list.component';
+import {SliderModule} from 'angular-image-slider';
+import {Ng2CarouselamosModule} from 'ng2-carouselamos';
 
 
 @NgModule({
@@ -16,7 +20,13 @@ import {PostImageFilter} from './post-image-filter';
     PostListComponent,
     PostNameFilterPipe,
     PostContentFilterPipe,
-    PostImageFilter
+    PostImageFilter,
+    StoryCreateComponent,
+    StoryListComponent
+  ],
+  exports: [
+    StoryListComponent,
+    StoryCreateComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +34,8 @@ import {PostImageFilter} from './post-image-filter';
     AngularMaterialModule,
     RouterModule,
     FormsModule,
-
+    SliderModule,
+    Ng2CarouselamosModule,
   ]
 })
 
