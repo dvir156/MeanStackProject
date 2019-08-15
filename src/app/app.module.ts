@@ -20,7 +20,6 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
 import {BottomComponent} from './bottom/bottom.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ApixuService} from './apixu.service';
-import {StoriesModule} from './stories/stories.module';
 
 
 
@@ -51,7 +50,7 @@ import {StoriesModule} from './stories/stories.module';
     }),
     MatGoogleMapsAutocompleteModule.forRoot(),
     ReactiveFormsModule,
-    StoriesModule
+
   ],
   providers: [[ApixuService],{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

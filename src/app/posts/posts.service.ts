@@ -31,12 +31,12 @@ export class PostsService {
               numOflikes: post.numOflikes,
               userIdThatLiked: post.userIdThatLiked
             };
-          }), maxPosts : postData.maxPosts};
+          }), maxStories : postData.maxPosts};
         })
       )
       .subscribe(transformedPostData => {
         this.posts = transformedPostData.posts;
-        this.postsUpdated.next({posts: [...this.posts], postCount: transformedPostData.maxPosts});
+        this.postsUpdated.next({posts: [...this.posts], postCount: transformedPostData.maxStories});
       });
   }
 

@@ -26,17 +26,17 @@ export class StoriesService {
             stories: storiesData.stories.map(story => {
               return {
                 id: story._id,
-                imageVideoPath: story.imagePath,
+                imageVideoPath: story.imageVideoPath,
                 date: story.date,
                 creator: story.creator,
               };
-            }), maxPosts: storiesData.maxStories
+            }), maxStories: storiesData.maxStories
           };
         })
       )
       .subscribe(transformedStoriesData => {
         this.stories = transformedStoriesData.stories;
-        this.storiesUpdated.next({stories: [...this.stories], storyCount: transformedStoriesData.maxPosts});
+        this.storiesUpdated.next({stories: [...this.stories], storyCount: transformedStoriesData.maxStories});
       });
     }
     getStory(id: string) {
@@ -49,7 +49,7 @@ export class StoriesService {
     }
   addStory(imageVideo: File) {
     const storyData = new FormData();
-    storyData.append('imageVideo', imageVideo);
+    storyData.append('imageVideo', imageVideo,'image2');
     this.http.post<{ message: string; story: Story }>(
       BACKEND_URL,
       storyData

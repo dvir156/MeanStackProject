@@ -5,35 +5,18 @@ const mongoose = require("mongoose");
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
-
 const profileRoutes = require("./routes/userprofile");
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const storiesRoutes = require('./routes/stories');
-
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.set('views', path.join(__dirname, 'backend/views'));
-// Require static assets from public folder
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Set 'views' directory for any views
-// being rendered res.render()
-app.set('views', path.join(__dirname, 'backend/views'));
-
-// Set view engine as EJS
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.set('view engine', 'pug');
-app.use(logger('dev'));
-app.use(cookieParser());
 
 // require('dotenv').config();
 // mongoose
@@ -41,25 +24,21 @@ app.use(cookieParser());
 //   .then(() => {
 //     console.log("Connected to database!");
 //   })
-//   .catch(() =>
+//   .catch(() => {
 //     console.log("Connection failed!");
 //   });
 
 
 /*                              Local mongo                                  */
-   mongoose.connect('mongodb://localhost:27017/MeanStackProject', {useNewUrlParser: true});
-   const connection = mongoose.connection;
-   connection.on('error', (error) => {
-   console.log('Error connecting to MongoDB', error);
-   });
-   connection.once('open', () => {
-   console.log('Connected to MongoDB');
-   });
+mongoose.connect('mongodb://localhost:27017/MeanStackProject', {useNewUrlParser: true});
+const connection = mongoose.connection;
+connection.on('error', (error) => {
+  console.log('Error connecting to MongoDB', error);
+});
+connection.once('open', () => {
+  console.log('Connected to MongoDB');
+});
 
-
-
-app.use("/images", express.static(path.join("backend/images")));
-app.use("/imagesVideo", express.static(path.join("backend/imagesVideo")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -75,7 +54,12 @@ app.use((req, res, next) => {
 });
 
 
+app.set('views', path.join(__dirname, 'backend/views'));
+app.set('view engine', 'pug');
+app.use(logger('dev'));
+app.use(cookieParser());
 
+app.use("/images", express.static(path.join("backend/images")));
 
 
 app.use("/api/posts", postsRoutes);
@@ -83,14 +67,10 @@ app.use("/api/user", userRoutes);
 app.use("/api/userprofile", profileRoutes);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use("/api/stories",storiesRoutes);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
-
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -100,7 +80,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  //res.render('error');
+  res.render('error');
 });
 
 
