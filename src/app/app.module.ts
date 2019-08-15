@@ -18,7 +18,6 @@ import {CanvasComponent} from './canvas/canvas-data/canvas.component';
 import { AgmCoreModule } from '@agm/core';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import {BottomComponent} from './bottom/bottom.component';
-import {WeatherComponent} from './weather/weather.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ApixuService} from './apixu.service';
 
@@ -31,7 +30,7 @@ import {ApixuService} from './apixu.service';
     ErrorComponent,
     CanvasComponent,
     BottomComponent,
-    WeatherComponent,
+
 
   ],
   imports: [

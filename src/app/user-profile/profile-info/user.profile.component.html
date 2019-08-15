@@ -16,7 +16,7 @@
 <!--             matGoogleMapsAutocomplete-->
 <!--             (onAutocompleteSelected)="onAutocompleteSelected($event)">-->
 <!--    </mat-form-field>-->
-    <mat-google-maps-autocomplete [appearance]="appearance.OUTLINE"
+    <mat-google-maps-autocomplete *ngIf="!authService.getUserNameFromLogin()[1]" [appearance]="appearance.OUTLINE"
                                   (onLocationSelected)="onLocationSelected($event)"
                                   (onAutocompleteSelected)="onAutocompleteSelected($event)">
       <input matInput name="Country" type="text">
