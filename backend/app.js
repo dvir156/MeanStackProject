@@ -20,7 +20,20 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// app.set('views', path.join(__dirname, 'backend/views'));
+// Require static assets from public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Set 'views' directory for any views
+// being rendered res.render()
+app.set('views', path.join(__dirname, 'backend/views'));
+
+// Set view engine as EJS
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('view engine', 'pug');
+app.use(logger('dev'));
+app.use(cookieParser());
 
 // require('dotenv').config();
 // mongoose
@@ -28,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //   .then(() => {
 //     console.log("Connected to database!");
 //   })
-//   .catch(() => {
+//   .catch(() =>
 //     console.log("Connection failed!");
 //   });
 
@@ -46,6 +59,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use("/images", express.static(path.join("backend/images")));
+app.use("/imagesVideo", express.static(path.join("backend/imagesVideo")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -61,10 +75,7 @@ app.use((req, res, next) => {
 });
 
 
-app.set('views', path.join(__dirname, 'backend/views'));
-app.set('view engine', 'pug');
-app.use(logger('dev'));
-app.use(cookieParser());
+
 
 
 app.use("/api/posts", postsRoutes);
@@ -89,7 +100,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  //res.render('error');
 });
 
 
