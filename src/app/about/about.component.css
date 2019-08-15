@@ -1,0 +1,303 @@
+body {
+  font-family: "proxima-nova",sans-serif;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+}
+
+.content-page h1,
+.content-page h2,
+.content-page h3,
+.content-page h4 {
+  margin: 0;
+  padding: 20px 0 10px 0;
+}
+
+.content-page .row {
+  padding: 30px 0 40px 0;
+}
+
+.content-page h2 {
+  color: #333333;
+  font-size: 30px;
+}
+.content-page p {
+  color: #333333;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.content-page a {
+  color: #000;
+  font-weight: 600;
+}
+
+.content-page .hero {
+  height: 250px;
+  background-image: url("https://systmapp-temp.s3.amazonaws.com/about/header-background.jpg");/*url("/images/headers/header-background.jpg");*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content-page .hero h1 {
+  color: #fff;
+  font-size: 48px;
+}
+.content-page .hero p {
+  color: #ebf0f5;
+  font-size: 14px;
+}
+
+
+
+
+h2{
+
+  /*text-shadow: 2px 2px #8f8f8f;*/
+  text-shadow: 0 0 3px #d67aff, 0 0 5px #2a1f3d;
+}
+
+.btt {
+  background-color: #2a1f3d; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  margin-left: 320px;
+  transition-property:font-size;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+  transition-delay: 3ms;
+}
+.btt:hover{
+  background-color: #e3b0ff; /* Green */
+  font-size: 30px;
+
+}
+
+
+.click{
+  font-size: 170px;
+  margin-left: 290px;
+
+}
+
+.footer-distributed{
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+
+  padding: 55px 50px;
+  margin-top: 80px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+  width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+  color:  #ffffff;
+  font: normal 36px 'Cookie', cursive;
+  margin: 0;
+}
+
+.footer-distributed h3 span{
+  color:  #8d4596;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+  color:  #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer-distributed .footer-links a{
+  display:inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+  color:  #8f9296;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+  width: 35%;
+}
+
+.footer-distributed .footer-center i{
+  background-color:  #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin:0;
+}
+
+.footer-distributed .footer-center p span{
+  display:block;
+  font-weight: normal;
+  font-size:14px;
+  line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+  color:  #8d4596;
+  text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+  width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+  line-height: 20px;
+  color:  #92999f;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+  display: block;
+  color:  #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+  margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color:  #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+  .footer-distributed{
+    font: bold 14px sans-serif;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right{
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-distributed .footer-center i{
+    margin-left: 0;
+  }
+
+}
+
+table {
+  height: 40%;
+  left: 10%;
+  margin: 20px auto;
+  overflow-y: scroll;
+  position: center;
+  width: 80%;
+}
+
+thead th {
+  background: #2A1F3D;
+  color: #FFF;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+tr {
+  background: #d2cdc7;
+  border-bottom: 1px solid #FFF;
+  margin-bottom: 5px;
+  border-color:#000000;
+}
+
+th, td {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  padding: 20px;
+  text-align: left;
+  width: 33.3333%;
+}
+
+.youtube{
+  position: center;
+  margin-left: 80px;
+}
