@@ -12,7 +12,6 @@
 <table mat-table [dataSource]="dataSource |NameFilter:searchTermByName|lastNameFilter:searchTermByLastName
 |countryFilter:searchTermByCountry"
        class="mat-elevation-z8">
-
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
   <!-- Position Column -->
@@ -49,3 +48,21 @@ GroupBy Places:
   <li *ngFor="let object of dataSource | groupBy:'countryName'">{{ object.key }}</li>
 </ul>
 </mat-card>
+<mat-divider></mat-divider>
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
+  <div style="display: block">
+    <canvas baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType"></canvas>
+  </div>
+</div>

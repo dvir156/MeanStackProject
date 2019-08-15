@@ -9,6 +9,8 @@ import {NameFilterPipe} from './name-filter';
 import {GroupByPipe} from './groupBy';
 import {LastnameFilter} from './lastname-filter';
 import {CountryFilter} from './country-filter';
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import {CountryFilter} from './country-filter';
     MatPaginatorModule,
     MatSortModule,
     MatSidenavModule,
+    ChartsModule,
 
   ]
 })
