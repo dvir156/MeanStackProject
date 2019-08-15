@@ -21,6 +21,7 @@ import {BottomComponent} from './bottom/bottom.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ApixuService} from './apixu.service';
 import {Ng2CarouselamosModule} from 'ng2-carouselamos';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -31,6 +32,7 @@ import {Ng2CarouselamosModule} from 'ng2-carouselamos';
     ErrorComponent,
     CanvasComponent,
     BottomComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

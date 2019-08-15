@@ -7,6 +7,7 @@ import {UserProfileComponent} from './user-profile/profile-info/user.profile.com
 import {MapComponent} from './map/map-google/map.component';
 import {StatisticsComponent} from './statistics/statistics-table/statistics.component';
 import {ChatComponent} from './web-socket/socket-io/chat.component';
+import {AboutComponent} from './about/about.component';
 
 const routes: Routes = [
   { path: '', component: PostListComponent },
@@ -16,7 +17,10 @@ const routes: Routes = [
   { path: 'statistics', component: StatisticsComponent , canActivate: [AuthGuard]},
   { path: 'map', component: MapComponent , canActivate: [AuthGuard]},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
-  { path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
+  { path: 'about', component: AboutComponent},
+
+
 
 ];
 
