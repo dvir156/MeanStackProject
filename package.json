@@ -28,7 +28,7 @@
     "@types/socket.io-client": "^1.4.32",
     "angular-http-server": "^1.9.0",
     "angular-image-slider": "0.0.8",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "chart.js": "^2.8.0",
     "cookie-parser": "^1.4.4",
