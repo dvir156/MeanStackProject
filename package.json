@@ -30,7 +30,7 @@
     "angular-image-slider": "0.0.8",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
